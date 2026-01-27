@@ -6,7 +6,8 @@ const projects = [
   {
     name: 'Mindstate Design Labs',
     href: 'https://mindstate.design/',
-    logo: '/images/shared/plants.webp',
+    logo: '/images/shared/mindstatelogo.webp',
+    wideLogo: true,
     dates: '2021 - Present',
     description: "In January of 2021 I began working with Mindstate Design Labs, a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.\n\nThrough my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.\n\nMy current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.",
   },
@@ -168,7 +169,7 @@ export function Home() {
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-accent">
                 <ExternalLink size={20} />
               </div>
-              <div className={`w-20 h-20 flex-shrink-0 flex items-center justify-center transition-all duration-300 ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
+              <div className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 ${project.wideLogo ? 'w-32 h-16' : 'w-20 h-20'} ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
                 <img
                   src={project.logo}
                   alt={project.name}
