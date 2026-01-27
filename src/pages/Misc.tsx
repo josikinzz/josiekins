@@ -42,7 +42,7 @@ function MiscCard({ title, description, imageSrc, href, isExternal = false }: Mi
 
 export function Misc() {
   return (
-    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+    <div className="">
       <Section
         verticalPadding="large"
         background="image"

@@ -70,7 +70,7 @@ const mediaReferences = [
   },
   {
     name: 'Deeper Learning with Psychedelics by David J. Blacker',
-    href: '/deeper-learning-with-psychedelics-by-david-j-blacker',
+    href: '/deeper-learning',
     external: false,
     type: 'article',
   },
@@ -116,7 +116,7 @@ const collaborators = [
 
 export function Home() {
   return (
-    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+    <div className="">
       {/* Hero Section */}
       <Section
         verticalPadding="large"

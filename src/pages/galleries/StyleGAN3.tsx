@@ -3,7 +3,7 @@ import { Section } from '@/components/Section'
 
 export function StyleGAN3() {
   return (
-    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+    <div className="">
       <Section
         verticalPadding="large"
         background="image"
