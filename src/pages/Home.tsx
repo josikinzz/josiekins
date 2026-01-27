@@ -176,7 +176,7 @@ export function Home() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-xl font-bold font-heading text-accent group-hover:text-accent-foreground group-hover:underline mb-1 truncate pr-6">
+                <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white group-hover:underline mb-1 truncate pr-6">
                   {project.name}
                 </h3>
                 <p className="text-xs uppercase tracking-wider text-white/50 mb-3 font-medium">{project.dates}</p>
