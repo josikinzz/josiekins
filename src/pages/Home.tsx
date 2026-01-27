@@ -168,11 +168,11 @@ export function Home() {
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-accent">
                 <ExternalLink size={20} />
               </div>
-              <div className="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50 transition-all duration-300">
+              <div className="w-20 h-20 flex-shrink-0 flex items-center justify-center transition-all duration-300">
                 <img
                   src={project.logo}
                   alt={project.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div className="flex-1 min-w-0">
