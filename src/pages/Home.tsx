@@ -55,6 +55,11 @@ const projects = [
 
 const mediaReferences = [
   {
+    name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025)',
+    href: 'https://schedule.sxsw.com/2025/contributors/2204921',
+    external: true,
+  },
+  {
     name: 'Deeper Learning with Psychedelics by David J. Blacker',
     href: '/deeper-learning-with-psychedelics-by-david-j-blacker',
     external: false,
