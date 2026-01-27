@@ -168,7 +168,7 @@ export function Home() {
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-accent">
                 <ExternalLink size={20} />
               </div>
-              <div className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 ${project.wideLogo ? 'w-32 h-16' : 'w-20 h-20'} ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
+              <div className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 w-20 h-20 ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
                 <img
                   src={project.logo}
                   alt={project.name}
