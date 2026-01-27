@@ -7,7 +7,7 @@ export function Reverence() {
       <Section
         verticalPadding="large"
         background="image"
-        backgroundImage="/images/shared/background.webp"
+        backgroundImage="/images/shared/eye+thingy+cool.webp"
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
@@ -18,7 +18,7 @@ export function Reverence() {
           <img
             src="/images/prototheism/reverance.webp"
             alt="Reverence"
-            className="max-w-md mx-auto mb-10 block rounded-full shadow-2xl ring-1 ring-white/10"
+            className="max-w-md mx-auto mb-10 block shadow-2xl"
           />
 
           <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">
@@ -51,21 +51,21 @@ export function Reverence() {
                   <div className="space-y-3 font-mono text-sm md:text-base text-white/80">
                     <div className="flex justify-between border-b border-white/5 pb-2"><span>First Anatomically Modern Humans</span> <span className="text-accent">200,000 BC</span></div>
                     <div className="flex justify-between border-b border-white/5 pb-2"><span>Agriculture Begins</span> <span className="text-accent">7500 BC</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Invention of Writing</span> <span className="text-accent">4000 BC</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First use of electricity</span> <span className="text-accent">1800 AD</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Invention of Writing (beginning of recorded history)</span> <span className="text-accent">4000 BC</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First use of electricity (Volta invents electrical battery)</span> <span className="text-accent">1800 AD</span></div>
                     <div className="flex justify-between border-b border-white/5 pb-2"><span>First Electronic Computer</span> <span className="text-accent">1946 AD</span></div>
-                    <div className="flex justify-between"><span>Invention of the internet</span> <span className="text-accent">1990 AD</span></div>
+                    <div className="flex justify-between"><span>Invention of the internet and beginning of the information age</span> <span className="text-accent">1990 AD</span></div>
                   </div>
                   <ul className="space-y-3 mt-8 text-sm md:text-base text-white/90">
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Agriculture</span> <span className="text-accent font-bold mono">4.7%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Written Language</span> <span className="text-accent font-bold mono">3%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Electricity</span> <span className="text-accent font-bold mono">0.1%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Computers</span> <span className="text-accent font-bold mono">0.03%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Information Age</span> <span className="text-accent font-bold mono">0.01%</span></li>
-                    <li className="flex items-center justify-between bg-accent/10 p-3 rounded border border-accent/20"><span>Hunter Gatherers</span> <span className="text-accent font-bold mono">95.3%</span></li>
+                    <li className="bg-white/5 p-3 rounded">We have had Agriculture for <span className="text-accent font-bold">4.7%</span> of Human History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had written Language for <span className="text-accent font-bold">3%</span> of Human history.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Electricity for <span className="text-accent font-bold">0.1%</span> of Human History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Computers for <span className="text-accent font-bold">0.03%</span> of Human History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have been in the information age for <span className="text-accent font-bold">0.01%</span> of Human History.</li>
+                    <li className="bg-accent/10 p-3 rounded border border-accent/20">We have been Hunter gatherers for the previous <span className="text-accent font-bold">95.3%</span> of Human History.</li>
                   </ul>
                   <blockquote className="text-xs md:text-sm italic text-center text-white/50 mt-6 border-t border-white/10 pt-4">
-                    (This timeline is just for Homo Sapien Sapiens. If included, Homo Sapiens existing alongside Neanderthals puts human civilisation at just the most recent 0.38% of human history.)
+                    (This timeline is just for Homo Sapien Sapiens. Homo Sapiens which are near identical to human beings with the only difference being that they existed along side Neanderthals and Homo Erectus within the homo genus have existed for the past 2,500,000 and if included puts human civilisation starting with agriculture at just the most recent 0.38% of human history.)
                   </blockquote>
                 </div>
 
@@ -76,26 +76,26 @@ export function Reverence() {
                     <div className="absolute top-1/2 left-0 w-full h-px bg-accent/20 -z-0"></div>
                   </h3>
                   <div className="space-y-3 font-mono text-sm md:text-base text-white/80">
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Formation of earth</span> <span className="text-accent text-right">4.55 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Simple Cells</span> <span className="text-accent text-right">3.88 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Photosynthesis</span> <span className="text-accent text-right">3 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Complex cells</span> <span className="text-accent text-right">2 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Multicellular Life</span> <span className="text-accent text-right">1 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Simple Animals</span> <span className="text-accent text-right">600 mya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Complex Animals</span> <span className="text-accent text-right">550 mya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Homo Genus</span> <span className="text-accent text-right">2.5 mya</span></div>
-                    <div className="flex justify-between"><span>Modern Humans</span> <span className="text-accent text-right">202k ya</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Formation of earth</span> <span className="text-accent text-right">4.55 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Simple Cells (bacteria/prokaryotes)</span> <span className="text-accent text-right">3.88 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Photosynthesis</span> <span className="text-accent text-right">3 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Complex cells (Eukaryotes)</span> <span className="text-accent text-right">2 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Multicellular Life</span> <span className="text-accent text-right">1 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Simple Animals</span> <span className="text-accent text-right">600 million years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Complex Animals</span> <span className="text-accent text-right">550 million years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Homo Genus</span> <span className="text-accent text-right">2.5 million years ago</span></div>
+                    <div className="flex justify-between"><span>Modern Humans</span> <span className="text-accent text-right">202,011 years ago</span></div>
                   </div>
                   <ul className="space-y-3 mt-8 text-sm md:text-base text-white/90">
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Simple Cells</span> <span className="text-accent font-bold mono">83.5%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Photosynthesis</span> <span className="text-accent font-bold mono">65.9%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Complex Cells</span> <span className="text-accent font-bold mono">43%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Multicellular Life</span> <span className="text-accent font-bold mono">21.9%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Simple Animals</span> <span className="text-accent font-bold mono">13%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Complex Animals</span> <span className="text-accent font-bold mono">12%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Homo Genus</span> <span className="text-accent font-bold mono">0.05%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Modern Man</span> <span className="text-accent font-bold mono">0.004%</span></li>
-                    <li className="flex items-center justify-between bg-accent/10 p-3 rounded border border-accent/20"><span>Civilisation</span> <span className="text-accent font-bold mono">0.0002%</span></li>
+                    <li className="bg-white/5 p-3 rounded">We have had simple cells for <span className="text-accent font-bold">83.5%</span> of Earths history.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had photosynthesis for <span className="text-accent font-bold">65.9%</span> of Earths history.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had complex cells for <span className="text-accent font-bold">43%</span> of Earths history.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Multicellular life for <span className="text-accent font-bold">21.9%</span> of Earths history.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Simple Animals for <span className="text-accent font-bold">13%</span> of Earths History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Complex Animals for <span className="text-accent font-bold">12%</span> of Earths History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had the Homo genus for <span className="text-accent font-bold">0.05%</span> of Earths History.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Modern Man for <span className="text-accent font-bold">0.004%</span> of Earths History.</li>
+                    <li className="bg-accent/10 p-3 rounded border border-accent/20">We had Civilisation for <span className="text-accent font-bold">0.0002%</span> of Earths History.</li>
                   </ul>
                 </div>
 
@@ -106,27 +106,29 @@ export function Reverence() {
                     <div className="absolute top-1/2 left-0 w-full h-px bg-accent/20 -z-0"></div>
                   </h3>
                   <div className="space-y-3 font-mono text-sm md:text-base text-white/80">
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>The Big Bang</span> <span className="text-accent text-right">14.7 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Matter Domination</span> <span className="text-accent text-right">14.69 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First Stars</span> <span className="text-accent text-right">14.6 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First Galaxies</span> <span className="text-accent text-right">14.1 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Earth Forms</span> <span className="text-accent text-right">4.55 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First Life</span> <span className="text-accent text-right">3.8 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Multicellular Life</span> <span className="text-accent text-right">1 bya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Complex Animals</span> <span className="text-accent text-right">550 mya</span></div>
-                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Homo Genus</span> <span className="text-accent text-right">2.5 mya</span></div>
-                    <div className="flex justify-between"><span>Civilisation</span> <span className="text-accent text-right">7,500 ya</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>The Big Bang</span> <span className="text-accent text-right">14.7 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Matter Domination Era</span> <span className="text-accent text-right">14,699,930,000 years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Hydrogen and Helium Atoms form</span> <span className="text-accent text-right">14,699,621,000 years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First stars form</span> <span className="text-accent text-right">14.6 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First Galaxies form</span> <span className="text-accent text-right">14.1 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Earth forms</span> <span className="text-accent text-right">4.55 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First life forms</span> <span className="text-accent text-right">3.8 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First multicellular life</span> <span className="text-accent text-right">1 billion years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>First complex animals</span> <span className="text-accent text-right">550 million years ago</span></div>
+                    <div className="flex justify-between border-b border-white/5 pb-2"><span>Homo Genus starts</span> <span className="text-accent text-right">2.5 million years ago</span></div>
+                    <div className="flex justify-between"><span>Start of civilisation</span> <span className="text-accent text-right">7,500 years ago</span></div>
                   </div>
                   <ul className="space-y-3 mt-8 text-sm md:text-base text-white/90">
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Matter</span> <span className="text-accent font-bold mono">99.999%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Stars</span> <span className="text-accent font-bold mono">99.3%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Galaxies</span> <span className="text-accent font-bold mono">95.9%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Earth</span> <span className="text-accent font-bold mono">30.05%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Life</span> <span className="text-accent font-bold mono">25.85%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Multicellular</span> <span className="text-accent font-bold mono">6.8%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Complex Animals</span> <span className="text-accent font-bold mono">3.74%</span></li>
-                    <li className="flex items-center justify-between bg-white/5 p-3 rounded"><span>Homo Genus</span> <span className="text-accent font-bold mono">0.017%</span></li>
-                    <li className="flex items-center justify-between bg-accent/10 p-3 rounded border border-accent/20"><span>Civilisation</span> <span className="text-accent font-bold mono">0.00005%</span></li>
+                    <li className="bg-white/5 p-3 rounded">We have had Matter for <span className="text-accent font-bold">99.9995238%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Hydrogen and Helium atoms for <span className="text-accent font-bold">99.9974218%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Stars for <span className="text-accent font-bold">99.3197279%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Galaxies for <span className="text-accent font-bold">95.9%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Earth for <span className="text-accent font-bold">30.05%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Life for <span className="text-accent font-bold">25.85%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Multicellular Life for <span className="text-accent font-bold">6.8%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had Complex animals for <span className="text-accent font-bold">3.74%</span> of existence.</li>
+                    <li className="bg-white/5 p-3 rounded">We have had the Homo Genus for <span className="text-accent font-bold">0.017%</span> of existence.</li>
+                    <li className="bg-accent/10 p-3 rounded border border-accent/20">We have had Civilisation for <span className="text-accent font-bold">0.00005%</span> of existence.</li>
                   </ul>
                 </div>
               </div>

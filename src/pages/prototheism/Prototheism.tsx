@@ -24,13 +24,11 @@ export function Prototheism() {
         bottomFadeOpacity={1}
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-          <div className="max-w-[200px] mx-auto mb-8 drop-shadow-2xl hover:scale-105 transition-transform duration-700">
-            <img
+          <img
               src="/images/prototheism/protheism+josicore+logo.webp"
               alt="Prototheism Logo"
-              className="w-full h-auto"
+              className="max-w-md mx-auto mb-10 block shadow-2xl"
             />
-          </div>
           <h1 className="text-4xl md:text-6xl font-light font-heading text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">
             Prototheism <span className="text-2xl md:text-3xl opacity-70 tracking-normal normal-case block mt-2 font-sans">(v0.1)</span>
           </h1>

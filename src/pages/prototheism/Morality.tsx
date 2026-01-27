@@ -18,7 +18,7 @@ export function Morality() {
           <img
             src="/images/prototheism/morality.webp"
             alt="Morality"
-            className="max-w-md mx-auto mb-10 block rounded-full shadow-2xl ring-1 ring-white/10"
+            className="max-w-md mx-auto mb-10 block shadow-2xl"
           />
 
           <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">

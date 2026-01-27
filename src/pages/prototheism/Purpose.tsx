@@ -7,7 +7,7 @@ export function Purpose() {
       <Section
         verticalPadding="large"
         background="image"
-        backgroundImage="/images/prototheism/josie+and+emily+it+came+to+me+in+a+trip.webp"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
@@ -18,7 +18,7 @@ export function Purpose() {
           <img
             src="/images/prototheism/purpose.webp"
             alt="Purpose"
-            className="max-w-md mx-auto mb-10 block rounded-full shadow-2xl ring-1 ring-white/10"
+            className="max-w-md mx-auto mb-10 block shadow-2xl"
           />
 
           <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">
