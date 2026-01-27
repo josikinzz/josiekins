@@ -7,7 +7,6 @@ const projects = [
     name: 'Mindstate Design Labs',
     href: 'https://mindstate.design/',
     logo: '/images/shared/mindstatelogo.webp',
-    wideLogo: true,
     dates: '2021 - Present',
     description: "In January of 2021 I began working with Mindstate Design Labs, a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.\n\nThrough my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.\n\nMy current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.",
   },
