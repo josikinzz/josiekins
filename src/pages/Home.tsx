@@ -109,8 +109,8 @@ const mediaReferences = [
 const collaborators = [
   { name: 'Emily Kins', href: 'https://www.youtube.com/@emilykins', avatar: '/images/shared/avatar.webp' },
   { name: 'Hypnagogist', href: 'https://hypnagogist.art/', avatar: '/images/shared/hypna.webp' },
-  { name: 'LokaVision', href: 'https://www.youtube.com/@LokaVision', avatar: '/images/shared/loka.webp' },
   { name: 'Pluralist Visuals', href: 'https://www.youtube.com/@pluralist.visuals', avatar: '/images/shared/zenby.webp' },
+  { name: 'LokaVision', href: 'https://www.youtube.com/@LokaVision', avatar: '/images/shared/loka.webp' },
   { name: 'Symmetric Vision', href: 'https://www.youtube.com/@SymmetricVision', avatar: '/images/shared/symmetric+vision.webp' },
 ]
 
