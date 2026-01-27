@@ -16,10 +16,10 @@ function MiscCard({ title, description, imageSrc, href, isExternal = false }: Mi
     : { to: href }
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 mb-16">
+    <div className="flex flex-col md:flex-row items-center gap-8 mb-12 bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 transition-all duration-300 hover:bg-black/30 hover:shadow-lg hover:border-accent/20">
       <LinkComponent
         {...(linkProps as any)}
-        className="group relative w-48 h-48 flex-shrink-0 overflow-hidden rounded-full"
+        className="group relative w-40 h-40 flex-shrink-0 overflow-hidden rounded-full ring-2 ring-transparent hover:ring-accent transition-all duration-300"
       >
         <img
           src={imageSrc}
@@ -30,11 +30,11 @@ function MiscCard({ title, description, imageSrc, href, isExternal = false }: Mi
       <div className="text-center md:text-left">
         <LinkComponent
           {...(linkProps as any)}
-          className="text-xl font-semibold text-accent hover:underline"
+          className="text-2xl font-bold font-heading text-accent hover:text-white transition-colors"
         >
           {title}
         </LinkComponent>
-        <p className="mt-2 text-white/80">{description}</p>
+        <p className="mt-3 text-white/90 text-lg font-light leading-relaxed">{description}</p>
       </div>
     </div>
   )
@@ -42,41 +42,45 @@ function MiscCard({ title, description, imageSrc, href, isExternal = false }: Mi
 
 export function Misc() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/background.webp"
-      backgroundOverlay
-    >
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold text-accent mb-4">The Misc Zone</h1>
-        <p className="text-lg text-accent italic">Links to miscellaneous stuff go here!</p>
-      </div>
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/background.webp"
+        backgroundOverlay
+      >
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-light font-heading text-accent mb-4 tracking-[0.2em] uppercase drop-shadow-md">
+            The Misc Zone
+          </h1>
+          <p className="text-lg text-white/80 italic font-light tracking-wide">Links to miscellaneous stuff go here!</p>
+        </div>
 
-      <div className="max-w-4xl mx-auto">
-        <MiscCard
-          title="AI Generated Psychedelia"
-          description="For several years now, I have been attempting to use generative AI image models to replicate accurate looking psychedelic hallucinations. This is a project that has very much evolved as models have improved. I am using this website to host the images as well as included prompts and information on the models used."
-          imageSrc="/images/shared/ai+dmt+entities.webp"
-          href="/ai-psychedelia"
-        />
+        <div className="max-w-4xl mx-auto space-y-8">
+          <MiscCard
+            title="AI Generated Psychedelia"
+            description="For several years now, I have been attempting to use generative AI image models to replicate accurate looking psychedelic hallucinations. This is a project that has very much evolved as models have improved. I am using this website to host the images as well as included prompts and information on the models used."
+            imageSrc="/images/shared/ai+dmt+entities.webp"
+            href="/ai-psychedelia"
+          />
 
-        <MiscCard
-          title="DisregardEveryThingISay YouTube Channel"
-          description="My second YouTube channel. I use this as a place to put silly, low effort, or unscripted videos that do not fit on my main channel."
-          imageSrc="/images/shared/Screenshot+2024-01-11+at+6.09.20+PM.webp"
-          href="https://www.youtube.com/@DisregardEverythingISay"
-          isExternal
-        />
+          <MiscCard
+            title="DisregardEveryThingISay YouTube Channel"
+            description="My second YouTube channel. I use this as a place to put silly, low effort, or unscripted videos that do not fit on my main channel."
+            imageSrc="/images/shared/Screenshot+2024-01-11+at+6.09.20+PM.webp"
+            href="https://www.youtube.com/@DisregardEverythingISay"
+            isExternal
+          />
 
-        <MiscCard
-          title="The Psychoactive Substances of Faerun"
-          description="A Dungeons and Dragons 5e homebrew system for integrating reality inspired psychoactive substances of all kinds into the mechanics and lore of the forgotten realms."
-          imageSrc="/images/shared/dnd5e.webp"
-          href="https://josiekins.xyz/s/The-Psychoactive-Substances-of-Faerun-An-Encyclopedic-Guide-The-Homebrewery-1-compressed.pdf"
-          isExternal
-        />
-      </div>
-    </Section>
+          <MiscCard
+            title="The Psychoactive Substances of Faerun"
+            description="A Dungeons and Dragons 5e homebrew system for integrating reality inspired psychoactive substances of all kinds into the mechanics and lore of the forgotten realms."
+            imageSrc="/images/shared/dnd5e.webp"
+            href="https://josiekins.xyz/s/The-Psychoactive-Substances-of-Faerun-An-Encyclopedic-Guide-The-Homebrewery-1-compressed.pdf"
+            isExternal
+          />
+        </div>
+      </Section>
+    </div>
   )
 }

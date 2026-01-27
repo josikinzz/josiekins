@@ -65,49 +65,52 @@ const images = [
 
 export function Magnific() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/eye+wall+angled.webp"
-      backgroundOverlay
-    >
-      <Link to="/ai-psychedelia" className="text-purple-400 hover:text-purple-300 mb-8 inline-block">
-        &larr; Back to AI Psychedelia
-      </Link>
-      <h1 className="text-4xl font-bold text-center text-accent mb-8">Magnific</h1>
-      <p className="text-right text-white/80 max-w-3xl mx-auto mb-4 text-lg"><em>~April 2024</em></p>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-6">
-        These images were created by feeding Midjourney art into Magnific AI, an advanced AI upscaler that can hallucinate new details into an image. I am extremely impressed with the results and feel that this technique is so far ahead of any stand alone model when it comes to replicating snap shots of high-level psychedelic hallucinations.
-      </p>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-8">
-        At this point, I feel that the quest to AI replicate still image snapshots of DMT hyperspace is accomplished about as well as it could be within the confines of a 2D screen. The only thing left is full video animation.
-      </p>
-      <div className="bg-black/40 rounded-lg p-6 max-w-3xl mx-auto mb-12">
-        <h3 className="font-semibold text-white mb-2">Midjourney Prompt:</h3>
-        <p className="text-sm text-white/80 mb-4 font-mono">
-          a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, generative art, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art --v 5 --ar 16:9
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
+        backgroundOverlay
+      >
+        <Link to="/ai-psychedelia" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide">
+          &larr; Back to AI Psychedelia
+        </Link>
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+          Magnific
+        </h1>
+        <p className="text-right text-white/60 max-w-3xl mx-auto mb-4 text-sm uppercase tracking-widest"><em>April 2024</em></p>
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-6 text-lg font-light leading-relaxed">
+          These images were created by feeding Midjourney art into Magnific AI, an advanced AI upscaler that can hallucinate new details into an image. I am extremely impressed with the results and feel that this technique is so far ahead of any stand alone model when it comes to replicating snap shots of high-level psychedelic hallucinations.
         </p>
-        <h3 className="font-semibold text-white mb-2">Magnific Prompt:</h3>
-        <p className="text-sm text-white/80 font-mono">
-          an extremely intricate interdimensional colorful hyperspace SOMETHING comprised of complex interlocking ancient ornamental patterns symbols and runes
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-10 text-lg font-light leading-relaxed">
+          At this point, I feel that the quest to AI replicate still image snapshots of DMT hyperspace is accomplished about as well as it could be within the confines of a 2D screen. The only thing left is full video animation.
         </p>
-      </div>
-      <div className="max-w-3xl mx-auto mb-12">
-        <div className="aspect-video">
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/626uwO113pQ"
-            title="Tutorial: Making DMT Replications in Midjourney / Magnific"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="rounded-lg"
-          />
+        <div className="bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 max-w-3xl mx-auto mb-12 shadow-lg">
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Midjourney Prompt:</h3>
+          <p className="text-sm text-white/80 mb-6 font-mono bg-black/20 p-4 rounded-lg border border-white/5">
+            a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, generative art, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art --v 5 --ar 16:9
+          </p>
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Magnific Prompt:</h3>
+          <p className="text-sm text-white/80 font-mono bg-black/20 p-4 rounded-lg border border-white/5">
+            an extremely intricate interdimensional colorful hyperspace SOMETHING comprised of complex interlocking ancient ornamental patterns symbols and runes
+          </p>
         </div>
-      </div>
-      <ImageGallery images={images} columns={3} />
-    </Section>
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/626uwO113pQ"
+              title="Tutorial: Making DMT Replications in Midjourney / Magnific"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+        </div>
+        <ImageGallery images={images} columns={3} />
+      </Section>
+    </div>
   )
 }

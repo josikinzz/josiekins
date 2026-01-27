@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/Section'
+import { ExternalLink, Newspaper, Video, Link as LinkIcon } from 'lucide-react'
 
 const projects = [
   {
@@ -58,36 +59,43 @@ const mediaReferences = [
     name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025)',
     href: 'https://schedule.sxsw.com/2025/contributors/2204921',
     external: true,
+    type: 'video',
   },
   {
     name: 'Deeper Learning with Psychedelics by David J. Blacker',
     href: '/deeper-learning-with-psychedelics-by-david-j-blacker',
     external: false,
+    type: 'article',
   },
   {
     name: 'What Hallucinogens Will Make You See (Nautilus)',
     href: 'https://nautil.us/what-hallucinogens-will-make-you-see-308247/',
     external: true,
+    type: 'article',
   },
   {
     name: 'Double Blind Magazine article/interview',
     href: 'https://doubleblindmag.com/ai-can-now-generate-dmt-visuals/',
     external: true,
+    type: 'article',
   },
   {
     name: "Video shows 'most accurate' representation of what psychedelic visuals look like (UNILAD)",
     href: 'https://www.unilad.com/news/most-accurate-representation-psychedelic-visuals-20221123',
     external: true,
+    type: 'video',
   },
   {
     name: 'AI Fed Psychedelic Images Generates DMT Visuals (Wholecelium)',
     href: 'https://www.wholecelium.com/blog/ai-fed-psychedelic-images-generates-dmt-visuals/',
     external: true,
+    type: 'article',
   },
   {
     name: 'How does one see the world under the influence of hallucinogens? A scientist created accurate video (Denik.cz)',
     href: 'https://www.denik.cz/veda/halucinogeny-drogy-uzivani-video.html?utm_source=www.seznam.cz&utm_medium=sekce-z-internetu#dop_ab_variant=0&dop_source_zone_name=hpfeed.sznhp.box',
     external: true,
+    type: 'video',
   },
 ]
 
@@ -101,7 +109,7 @@ const collaborators = [
 
 export function Home() {
   return (
-    <>
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
       {/* Hero Section */}
       <Section
         verticalPadding="large"
@@ -114,15 +122,19 @@ export function Home() {
           <img
             src="/images/shared/Josie_+(2).webp"
             alt="Josie Kins"
-            className="max-w-md w-full mx-auto mb-8 object-contain"
+            className="max-w-md w-full mx-auto mb-8 object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:scale-[1.02] transition-transform duration-700 ease-in-out"
           />
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-accent">Josie Kins INFO</h1>
-          <p className="text-lg text-white/80 mb-4">
-            Psychedelic researcher with leading expertise in the formal documentation and classification of altered states of consciousness.
-          </p>
-          <p className="text-lg text-white/80">
-            A prominent researcher, writer, community leader, YouTuber, and content creator within the online psychedelic subculture.
-          </p>
+          <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 text-accent tracking-tight drop-shadow-sm pb-2">
+            JOSIE KINS INFO
+          </h1>
+          <div className="max-w-2xl mx-auto space-y-4">
+            <p className="text-lg text-white/90 leading-relaxed">
+              Psychedelic researcher with leading expertise in the formal documentation and classification of altered states of consciousness.
+            </p>
+            <p className="text-lg text-white/90 leading-relaxed">
+              A prominent researcher, writer, community leader, YouTuber, and content creator within the online psychedelic subculture.
+            </p>
+          </div>
         </div>
       </Section>
 
@@ -134,22 +146,26 @@ export function Home() {
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
-          <h2 className="text-3xl font-bold text-center text-accent mb-12">MY WORK</h2>
+          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+            My Work
+          </h2>
 
-          <div className="space-y-6 text-white/80">
-            <p>
-              In January of 2021 I began working with{' '}
-              <a href="https://mindstate.design/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-                Mindstate Design Labs
-              </a>
-              , a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.
-            </p>
-            <p>
-              Through my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.
-            </p>
-            <p>
-              My current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.
-            </p>
+          <div className="bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-10 shadow-2xl">
+            <div className="space-y-6 text-white/90 leading-relaxed font-light text-lg">
+              <p>
+                In January of 2021 I began working with{' '}
+                <a href="https://mindstate.design/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors font-medium border-b border-accent/30 hover:border-accent">
+                  Mindstate Design Labs
+                </a>
+                , a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.
+              </p>
+              <p>
+                Through my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.
+              </p>
+              <p>
+                My current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.
+              </p>
+            </div>
           </div>
         </div>
       </Section>
@@ -161,30 +177,35 @@ export function Home() {
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
       >
-        <h2 className="text-3xl font-bold text-center text-accent mb-12">PROJECTS I'VE FOUNDED</h2>
+        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+          Projects I've Founded
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
           {projects.map((project) => (
             <a
               key={project.name}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex gap-6 p-6 bg-black/30 rounded-lg hover:bg-black/40 transition-colors"
+              className="group flex gap-6 p-8 bg-black/20 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-black/40 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(var(--accent),0.3)] transition-all duration-300 relative overflow-hidden"
             >
-              <div className="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden">
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-accent">
+                <ExternalLink size={20} />
+              </div>
+              <div className="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50 transition-all duration-300">
                 <img
                   src={project.logo}
                   alt={project.name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-accent group-hover:underline mb-1">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-xl font-bold font-heading text-accent group-hover:text-accent-foreground group-hover:underline mb-1 truncate pr-6">
                   {project.name}
                 </h3>
-                <p className="text-sm text-white/60 mb-2">{project.dates}</p>
-                <p className="text-sm text-white/80">{project.description}</p>
+                <p className="text-xs uppercase tracking-wider text-white/50 mb-3 font-medium">{project.dates}</p>
+                <p className="text-base text-white/80 leading-relaxed font-light">{project.description}</p>
               </div>
             </a>
           ))}
@@ -198,29 +219,49 @@ export function Home() {
         backgroundImage="/images/shared/geometry+circle+wall.webp"
         backgroundOverlay
       >
-        <div className="max-w-3xl mx-auto text-white">
-          <h2 className="text-3xl font-bold text-center text-accent mb-12">MEDIA REFERENCES</h2>
+        <div className="max-w-5xl mx-auto text-white">
+          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+            Media References
+          </h2>
 
-          <ul className="list-disc list-inside space-y-3 text-white/80">
-            {mediaReferences.map((ref) => (
-              <li key={ref.name}>
-                {ref.external ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {mediaReferences.map((ref) => {
+              const Icon = ref.type === 'video' ? Video : ref.type === 'article' ? Newspaper : LinkIcon
+
+              const Wrapper = ({ children }: { children: React.ReactNode }) =>
+                ref.external ? (
                   <a
                     href={ref.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-accent hover:underline"
+                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
                   >
-                    {ref.name}
+                    {children}
                   </a>
                 ) : (
-                  <Link to={ref.href} className="text-accent hover:underline">
-                    {ref.name}
+                  <Link
+                    to={ref.href}
+                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+                  >
+                    {children}
                   </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+                )
+
+              return (
+                <Wrapper key={ref.name}>
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-colors duration-300 flex-shrink-0">
+                    <Icon size={20} />
+                  </div>
+                  <span className="text-white/90 group-hover:text-accent transition-colors font-medium">
+                    {ref.name}
+                  </span>
+                  {ref.external && (
+                    <ExternalLink size={14} className="ml-auto text-white/20 group-hover:text-accent/50 transition-colors" />
+                  )}
+                </Wrapper>
+              )
+            })}
+          </div>
         </div>
       </Section>
 
@@ -231,25 +272,27 @@ export function Home() {
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
       >
-        <h2 className="text-3xl font-bold text-center text-accent mb-12">COLLABORATORS</h2>
+        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+          Collaborators
+        </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto px-4">
           {collaborators.map((collab) => (
             <a
               key={collab.name}
               href={collab.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center text-center"
+              className="group flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white/5 transition-colors duration-300"
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-105">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-5 ring-2 ring-transparent group-hover:ring-accent group-hover:shadow-[0_0_20px_rgba(var(--accent),0.4)] transition-all duration-300 relative">
                 <img
                   src={collab.avatar}
                   alt={collab.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <h3 className="text-sm font-medium text-accent group-hover:underline">
+              <h3 className="text-base font-bold font-heading text-white/90 group-hover:text-accent transition-colors">
                 {collab.name}
               </h3>
             </a>
@@ -257,14 +300,14 @@ export function Home() {
         </div>
 
         {/* Prototheism Banner */}
-        <div className="max-w-sm mx-auto mt-16">
+        <div className="max-w-sm mx-auto mt-24">
           <img
             src="/images/shared/Josie_Icons3.webp"
             alt="Prototheism"
-            className="w-full object-contain"
+            className="w-full object-contain filter brightness-75 hover:brightness-100 transition-all duration-700 drop-shadow-2xl hover:scale-105"
           />
         </div>
       </Section>
-    </>
+    </div>
   )
 }

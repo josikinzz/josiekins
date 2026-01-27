@@ -49,31 +49,35 @@ const images = [
 
 export function MJV4Improved() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/eye+wall+angled.webp"
-      backgroundOverlay
-    >
-      <Link to="/ai-psychedelia" className="text-purple-400 hover:text-purple-300 mb-8 inline-block">
-        &larr; Back to AI Psychedelia
-      </Link>
-      <h1 className="text-4xl font-bold text-center text-accent mb-8">Midjourney V4 (improved prompt)</h1>
-      <p className="text-right text-white/80 max-w-3xl mx-auto mb-4 text-lg"><em>~January 2023</em></p>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-8">
-        This gallery marks the point at which the Subjective Effect Documentation community had greatly improved the necessary text prompt to generate the best possible psychedelic replications that Midjourney V4 was capable of producing. To do this, we trained an image captioner on a dataset of human made psychedelic artwork and prompted it to describe each image. After many attempts it generated a prompt that worked better than anything we could come up with ourselves. We then manually tweaked the prompt into the text below, and continued to use this across future versions of midjourney.
-      </p>
-      <div className="bg-black/40 rounded-lg p-6 max-w-3xl mx-auto mb-8">
-        <h3 className="font-semibold text-white mb-2">Prompt:</h3>
-        <p className="text-sm text-white/80 font-mono mb-4">
-          a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, by Alex Grey and Cy Twombly, generative art, mayan aztec hindu egyptian ancient alien shamanic, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art, instagram artsy filter
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
+        backgroundOverlay
+      >
+        <Link to="/ai-psychedelia" className="text-accent/80 hover:text-accent mb-8 inline-block transition-colors tracking-wide text-sm uppercase">
+          &larr; Back to AI Psychedelia
+        </Link>
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+          Midjourney V4 (Improved)
+        </h1>
+        <p className="text-right text-white/60 max-w-3xl mx-auto mb-4 text-sm uppercase tracking-widest"><em>January 2023</em></p>
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-8 text-lg font-light leading-relaxed">
+          This gallery marks the point at which the Subjective Effect Documentation community had greatly improved the necessary text prompt to generate the best possible psychedelic replications that Midjourney V4 was capable of producing. To do this, we trained an image captioner on a dataset of human made psychedelic artwork and prompted it to describe each image. After many attempts it generated a prompt that worked better than anything we could come up with ourselves. We then manually tweaked the prompt into the text below, and continued to use this across future versions of midjourney.
         </p>
-        <h3 className="font-semibold text-white mb-2">Usage Notes:</h3>
-        <p className="text-sm text-white/80">
-          Simply swap out "SOMETHING" with the desired concept, this concept can be an entity ("jester", "elf", "deity", etc) or it can be a "pattern", "landscape", "environment", or whatever else. Also, add or remove "CUTE" as needed since MJ often likes to force psychedelic entity generations to look overly scary if this word isn't included. You may also need to swap out "CUTE" for "UGLY" when generating female characters, as MJ likes to generate women with weird instagram model aesthetics.
-        </p>
-      </div>
-      <ImageGallery images={images} columns={3} />
-    </Section>
+        <div className="bg-black/30 backdrop-blur-sm border border-white/10 rounded-3xl p-8 max-w-3xl mx-auto mb-12 shadow-lg">
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Prompt:</h3>
+          <p className="text-sm text-white/80 font-mono mb-6 bg-black/20 p-4 rounded-lg border border-white/5">
+            a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, by Alex Grey and Cy Twombly, generative art, mayan aztec hindu egyptian ancient alien shamanic, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art, instagram artsy filter
+          </p>
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Usage Notes:</h3>
+          <p className="text-sm text-white/80 leading-relaxed font-light">
+            Simply swap out "SOMETHING" with the desired concept, this concept can be an entity ("jester", "elf", "deity", etc) or it can be a "pattern", "landscape", "environment", or whatever else. Also, add or remove "CUTE" as needed since MJ often likes to force psychedelic entity generations to look overly scary if this word isn't included. You may also need to swap out "CUTE" for "UGLY" when generating female characters, as MJ likes to generate women with weird instagram model aesthetics.
+          </p>
+        </div>
+        <ImageGallery images={images} columns={3} />
+      </Section>
+    </div>
   )
 }

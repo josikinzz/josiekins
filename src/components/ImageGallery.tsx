@@ -94,7 +94,7 @@ export function ImageGallery({
             key={index}
             onClick={() => openLightbox(index)}
             className={cn(
-              'group relative overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent',
+              'group relative overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent rounded-xl border border-white/10 shadow-sm',
               aspectRatioMap[aspectRatio]
             )}
           >
@@ -102,7 +102,7 @@ export function ImageGallery({
               src={image.src}
               alt={image.alt || image.title || `Image ${index + 1}`}
               className={cn(
-                'w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-150',
+                'w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110',
                 aspectRatio === 'auto' && 'h-auto'
               )}
             />

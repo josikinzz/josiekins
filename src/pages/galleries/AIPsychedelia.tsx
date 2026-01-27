@@ -41,17 +41,21 @@ const subGalleries = [
 
 export function AIPsychedelia() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/eye+wall+angled.webp"
-      backgroundOverlay
-    >
-      <h1 className="text-4xl font-bold text-center text-accent mb-8">AI Psychedelia</h1>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-12">
-        For several years now, I have been attempting to use generative AI image models to replicate accurate looking psychedelic hallucinations. This is a project that has very much evolved as models have improved. I am using this website to host the images as well as included prompts and information on the models used.
-      </p>
-      <GalleryGrid items={subGalleries} columns={2} />
-    </Section>
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
+        backgroundOverlay
+      >
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+          AI Psychedelia
+        </h1>
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-16 text-lg font-light leading-relaxed">
+          For several years now, I have been attempting to use generative AI image models to replicate accurate looking psychedelic hallucinations. This is a project that has very much evolved as models have improved. I am using this website to host the images as well as included prompts and information on the models used.
+        </p>
+        <GalleryGrid items={subGalleries} columns={2} />
+      </Section>
+    </div>
   )
 }

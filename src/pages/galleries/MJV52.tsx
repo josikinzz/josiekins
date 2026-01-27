@@ -21,31 +21,35 @@ const images = [
 
 export function MJV52() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/eye+wall+angled.webp"
-      backgroundOverlay
-    >
-      <Link to="/ai-psychedelia" className="text-purple-400 hover:text-purple-300 mb-8 inline-block">
-        &larr; Back to AI Psychedelia
-      </Link>
-      <h1 className="text-4xl font-bold text-center text-accent mb-8">Midjourney V5.2</h1>
-      <p className="text-right text-white/80 max-w-3xl mx-auto mb-4 text-lg"><em>~November 2023</em></p>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-8">
-        To be honest, I am not the biggest fan of this model's outputs. The images are remarkably coherent but in a lot of ways it has caused them to feel less psychedelic. There are still some really amazing AI replications in here. However, they are highly cherry picked while still being less consistently realistic than V4 and to a lesser extent, v5. The coherency is improved but the vibes are simply not there.
-      </p>
-      <div className="bg-black/40 rounded-lg p-6 max-w-3xl mx-auto mb-8">
-        <h3 className="font-semibold text-white mb-2">Prompt:</h3>
-        <p className="text-sm text-white/80 font-mono mb-4">
-          a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, by Alex grey, generative art, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art --v 5.2 --ar 16:9
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
+        backgroundOverlay
+      >
+        <Link to="/ai-psychedelia" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide">
+          &larr; Back to AI Psychedelia
+        </Link>
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+          Midjourney V5.2
+        </h1>
+        <p className="text-right text-white/60 max-w-3xl mx-auto mb-4 text-sm uppercase tracking-widest"><em>November 2023</em></p>
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-8 text-lg font-light leading-relaxed">
+          To be honest, I am not the biggest fan of this model's outputs. The images are remarkably coherent but in a lot of ways it has caused them to feel less psychedelic. There are still some really amazing AI replications in here. However, they are highly cherry picked while still being less consistently realistic than V4 and to a lesser extent, v5. The coherency is improved but the vibes are simply not there.
         </p>
-        <h3 className="font-semibold text-white mb-2">Usage Notes:</h3>
-        <p className="text-sm text-white/80">
-          Simply swap out "SOMETHING" with the desired concept, this concept can be an entity ("jester", "elf", "deity", etc) or it can be a "pattern", "landscape", "environment", or whatever else. Also, add or remove "CUTE" as needed since MJ often likes to force psychedelic entity generations to look overly scary if this word isn't included. You may also need to swap out "CUTE" for "UGLY" when generating female characters, as MJ likes to generate women with weird instagram model aesthetics.
-        </p>
-      </div>
-      <ImageGallery images={images} columns={3} />
-    </Section>
+        <div className="bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 max-w-3xl mx-auto mb-12 shadow-lg">
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Prompt:</h3>
+          <p className="text-sm text-white/80 font-mono mb-6 bg-black/20 p-4 rounded-lg border border-white/5">
+            a close up of a colorful and highly detailed CUTE psychedelic SOMETHING, an abstract drawing, by Alex grey, generative art, hieroglyphic symbols and runes, cubic conic crystals, isometric style, symmetry, studio lighting, crisp 3D render, visionary art, psychedelic art --v 5.2 --ar 16:9
+          </p>
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Usage Notes:</h3>
+          <p className="text-sm text-white/80 leading-relaxed font-light">
+            Simply swap out "SOMETHING" with the desired concept, this concept can be an entity ("jester", "elf", "deity", etc) or it can be a "pattern", "landscape", "environment", or whatever else. Also, add or remove "CUTE" as needed since MJ often likes to force psychedelic entity generations to look overly scary if this word isn't included. You may also need to swap out "CUTE" for "UGLY" when generating female characters, as MJ likes to generate women with weird instagram model aesthetics.
+          </p>
+        </div>
+        <ImageGallery images={images} columns={3} />
+      </Section>
+    </div>
   )
 }

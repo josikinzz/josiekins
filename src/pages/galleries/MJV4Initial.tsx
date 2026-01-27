@@ -38,27 +38,31 @@ const images = [
 
 export function MJV4Initial() {
   return (
-    <Section
-      verticalPadding="large"
-      background="image"
-      backgroundImage="/images/shared/eye+wall+angled.webp"
-      backgroundOverlay
-    >
-      <Link to="/ai-psychedelia" className="text-purple-400 hover:text-purple-300 mb-8 inline-block">
-        &larr; Back to AI Psychedelia
-      </Link>
-      <h1 className="text-4xl font-bold text-center text-accent mb-8">Midjourney V4 (Initial Attempts)</h1>
-      <p className="text-right text-white/80 max-w-3xl mx-auto mb-4 text-lg"><em>~December 2022</em></p>
-      <p className="text-center text-white/80 max-w-3xl mx-auto mb-8">
-        Midjourney v4 marks the point at which I realized that StyleGANs were finally obsolete and that for now, at least, diffusion model image generators are now superior tools for replicating psychedelic hallucinations.
-      </p>
-      <div className="bg-black/40 rounded-lg p-6 max-w-3xl mx-auto mb-12">
-        <h3 className="font-semibold text-white mb-2">Initial Prompt Used:</h3>
-        <p className="text-sm text-white/80 font-mono">
-          a close up of a colorful pattern on fabric, an abstract drawing, by John Backderf, generative art, mayan shaman, cubic crystals, isometric style and dating will skyscang, highly detailed symmetry, visionary art, visionaryart
+    <div className="animate-in fade-in zoom-in-95 duration-1000 ease-out">
+      <Section
+        verticalPadding="large"
+        background="image"
+        backgroundImage="/images/shared/eye+wall+angled.webp"
+        backgroundOverlay
+      >
+        <Link to="/ai-psychedelia" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide">
+          &larr; Back to AI Psychedelia
+        </Link>
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+          Midjourney V4 (Initial)
+        </h1>
+        <p className="text-right text-white/60 max-w-3xl mx-auto mb-4 text-sm uppercase tracking-widest"><em>December 2022</em></p>
+        <p className="text-center text-white/90 max-w-3xl mx-auto mb-8 text-lg font-light leading-relaxed">
+          Midjourney v4 marks the point at which I realized that StyleGANs were finally obsolete and that for now, at least, diffusion model image generators are now superior tools for replicating psychedelic hallucinations.
         </p>
-      </div>
-      <ImageGallery images={images} columns={3} />
-    </Section>
+        <div className="bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 max-w-3xl mx-auto mb-12 shadow-lg">
+          <h3 className="font-bold text-accent mb-3 uppercase tracking-wider text-sm">Initial Prompt Used:</h3>
+          <p className="text-sm text-white/80 font-mono bg-black/20 p-4 rounded-lg border border-white/5">
+            a close up of a colorful pattern on fabric, an abstract drawing, by John Backderf, generative art, mayan shaman, cubic crystals, isometric style and dating will skyscang, highly detailed symmetry, visionary art, visionaryart
+          </p>
+        </div>
+        <ImageGallery images={images} columns={3} />
+      </Section>
+    </div>
   )
 }
