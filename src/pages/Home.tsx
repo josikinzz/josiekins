@@ -4,6 +4,13 @@ import { ExternalLink, Newspaper, Video, Link as LinkIcon } from 'lucide-react'
 
 const projects = [
   {
+    name: 'Mindstate Design Labs',
+    href: 'https://mindstate.design/',
+    logo: '/images/shared/plants.webp',
+    dates: '2021 - Present',
+    description: "In January of 2021 I began working with Mindstate Design Labs, a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.\n\nThrough my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.\n\nMy current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.",
+  },
+  {
     name: 'PsyAI.chat',
     href: 'https://psyai.chat/',
     logo: '/images/shared/psy+ai+logo.webp',
@@ -138,39 +145,7 @@ export function Home() {
         </div>
       </Section>
 
-      {/* My Work Section */}
-      <Section
-        verticalPadding="large"
-        background="image"
-        backgroundImage="/images/shared/eye+thingy+cool.webp"
-        backgroundOverlay
-      >
-        <div className="max-w-3xl mx-auto text-white">
-          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
-            My Work
-          </h2>
-
-          <div className="bg-black/20 backdrop-blur-md border border-white/5 rounded-3xl p-8 md:p-10 shadow-2xl">
-            <div className="space-y-6 text-white/90 leading-relaxed font-light text-lg">
-              <p>
-                In January of 2021 I began working with{' '}
-                <a href="https://mindstate.design/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 transition-colors font-medium border-b border-accent/30 hover:border-accent">
-                  Mindstate Design Labs
-                </a>
-                , a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.
-              </p>
-              <p>
-                Through my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.
-              </p>
-              <p>
-                My current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Projects Section */}
+      {/* Resume Section */}
       <Section
         verticalPadding="large"
         background="image"
