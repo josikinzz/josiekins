@@ -180,7 +180,7 @@ export function Home() {
                   {project.name}
                 </h3>
                 <p className="text-xs uppercase tracking-wider text-white/50 mb-3 font-medium">{project.dates}</p>
-                <p className="text-base text-white/80 leading-relaxed font-light">{project.description}</p>
+                <p className="text-base text-white/80 leading-relaxed font-light whitespace-pre-line">{project.description}</p>
               </div>
             </a>
           ))}
