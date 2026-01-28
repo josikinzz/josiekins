@@ -76,7 +76,7 @@ export function Misc() {
             title="The Psychoactive Substances of Faerun"
             description="A Dungeons and Dragons 5e homebrew system for integrating reality inspired psychoactive substances of all kinds into the mechanics and lore of the forgotten realms."
             imageSrc="/images/shared/dnd5e.webp"
-            href="https://josiekins.xyz/s/The-Psychoactive-Substances-of-Faerun-An-Encyclopedic-Guide-The-Homebrewery-1-compressed.pdf"
+            href="/psychoactive-substances-of-faerun.pdf"
             isExternal
           />
         </div>
