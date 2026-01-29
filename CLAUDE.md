@@ -226,8 +226,6 @@ ___
 
 FUTURE TASKS
 FUTURE TASKS
-- Add my SXSW appearance to the media section as well as mentions of me in the DMT entities book
-- Change projects I've founded to Resume. Add mindstate design labs to the resume.
 - Add our clinical trial to the resume.
 - Add password protection for prototheism
 - Add Video reps to the AI psychedelia section.
@@ -237,3 +235,5 @@ FUTURE TASKS
 - add ai comic tracker stuff, refactor that.
 - add dnd pdf
 - add t3.consensus
+- make it so the external links icon doesnt get smaller in the emdia references cards depending on how much text there is
+- make it so the title isnt its own section on the mckenna syndrome page

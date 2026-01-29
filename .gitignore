@@ -29,3 +29,5 @@ npm-debug.log*
 
 # Old site reference (not part of new build)
 old site/
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo

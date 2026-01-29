@@ -8,20 +8,38 @@ const projects = [
     href: 'https://mindstate.design/',
     logo: '/images/shared/mindstatelogo.webp',
     dates: '2021 - Present',
-    description: "In January of 2021 I began working with Mindstate Design Labs, a psychedelic drug development company designing altered states of consciousness for mental health therapeutics. I am currently a project manager for their subjective effect research platform.\n\nThrough my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.\n\nMy current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.",
+    roles: ['Phenomenologist', 'AI Performance Specialist', 'Systems Engineer'],
+    description: "In January of 2021 I began working with Mindstate Design Labs as their first full-time hire. Mindstate is a clinical-stage AI neuroengineering platform and drug development company. I am currently a phenomenologist, AI performance specialist, and systems engineer.\n\nThrough my systematic review of pre-existing classification systems for altered states of consciousness, we have created a uniquely comprehensive subjective effect classification system for scientific application.\n\nMy current research focuses on applying the novel Emergent Subjective Effect Index to extensive datasets of experience reports. We use advanced AI language models, trained on human-tagged experience reports, to statistically analyze the relationship between receptor affinities and experiential outcomes. Preliminary results are highly promising and suggest that this methodology can deepen our understanding of how psychedelic compounds interact with our neurophysiology for applications in drug development and mental health treatment.",
+  },
+  {
+    name: 'MSD-001 Phase 1 Clinical Trial',
+    href: 'https://microdose.buzz/news/mindstate-design-receives-fda-approval/',
+    logo: '/images/shared/mindstatelogo.webp',
+    dates: '2024 - 2025',
+    description: 'Part of the team at Mindstate Design Labs that ran a Phase 1 clinical trial for MSD-001 (5-MeO-MiPT). The study at the Centre for Human Drug Research in the Netherlands demonstrated consistent psychoactive effects without hallucinations across all 47 participants.',
   },
   {
     name: 'PsyAI.chat',
     href: 'https://psyai.chat/',
     logo: '/images/shared/psy+ai+logo.webp',
-    dates: '2023 - Present',
-    description: 'Co-founded in collaboration with Sernyl and funded by a grant through Bluelight and MAPS. PsyAI is an AI chatbot trained on my personal internet bibliography. It provides unbiased and uncensored information on any questions pertaining to psychonautics and the safe use of psychoactive substances.',
+    dates: '2023 - Dec 2025',
+    roles: ['Co-Founder'],
+    description: 'Co-founded in collaboration with Sernyl and funded by a grant through Bluelight and MAPS. PsyAI was an AI chatbot trained on my personal internet bibliography. It provided unbiased and uncensored information on any questions pertaining to psychonautics and the safe use of psychoactive substances.',
+  },
+  {
+    name: 'The Josie Kins Youtube Channel',
+    href: 'https://www.youtube.com/@josikinz',
+    logo: '/images/shared/slice1.webp',
+    dates: 'May 2020 - Present',
+    roles: ['Creator'],
+    description: 'Content from my various projects are often showcased on my personal YouTube channel with over 100,000 subscribers, an average of 600,000 views a month, and a dedicated following.',
   },
   {
     name: 'EffectIndex.com',
     href: 'https://effectindex.com/',
     logo: '/images/shared/ei+logo+svg.webp',
     dates: '2017 - Present',
+    roles: ['Founder'],
     description: 'A community-driven resource dedicated to establishing the field of formalized Subjective Effect Documentation. It serves as a central and dedicated online platform for showcasing the Subjective Effect Index (SEI).',
   },
   {
@@ -29,6 +47,7 @@ const projects = [
     href: 'https://www.reddit.com/r/replications/top/?t=year',
     logo: '/images/shared/replications+png.webp',
     dates: 'Oct 2015 - Present',
+    roles: ['Founder'],
     description: 'A forum with over 143,000 subscribers that encourages people to post and create image, video, and audio replications of the hallucinogenic experience or other altered states of consciousness. It has kickstarted the successful careers of multiple visionary artists and replicators.',
   },
   {
@@ -36,32 +55,41 @@ const projects = [
     href: 'https://psychonautwiki.org/',
     logo: '/images/shared/Psychonautwiki_hires.webp',
     dates: 'May 2013 - May 2017',
+    roles: ['Founder'],
     description: 'An academic, open source, and comprehensive encyclopedia on the topic of altered states of consciousness, psychoactive substances, and harm reduction information. It includes over 2000 articles and is one of the most prominent informational resources of its kind, peaking in traffic at around 1 million unique visitors a month.',
+    warning: 'Note: I am no longer associated with this website and cannot in good faith recommend using its present day iteration.',
   },
   {
     name: 'Subjective Effect Index',
     href: 'https://effectindex.com/effects',
     logo: '/images/shared/SEI_Logo2.webp',
     dates: 'May 2011 - Present',
+    roles: ['Founder'],
     description: "Serving as a core feature of a variety of my different projects, the SEI is the first comprehensive catalog and reference for the full range of subjective effects that may occur under the influence of psychoactive substances and other psychonautic techniques. It consists of over 200 individual subjective effects with accompanying descriptions, subcomponents, categories, levelling systems, and image/video replications. Its aim is to enable the field of psychedelic research to achieve its full potential by creating a granular taxonomy of the subjective psychedelic experience.",
-  },
-  {
-    name: 'The Josie Kins Youtube Channel',
-    href: 'https://www.youtube.com/@josikinz',
-    logo: '/images/shared/slice1.webp',
-    dates: 'May 2020 - Present',
-    description: 'Content from my various projects are often showcased on my personal YouTube channel with over 100,000 subscribers, an average of 600,000 views a month, and a dedicated following.',
   },
   {
     name: 'Disregard Every Thing I Say',
     href: 'https://disregardeverythingisay.com/',
     logo: '/images/shared/Disregard_Everything_I_Say_Logo.webp',
     dates: 'May 2011 - 2016',
+    roles: ['Creator'],
     description: 'The unlikely initial start of my career, this blog is where I first founded the Subjective Effect Index project and generally established my lifelong passion for studying the psychedelic experience.',
   },
 ]
 
 const mediaReferences = [
+  {
+    name: 'Josie Kins (Wikipedia)',
+    href: 'https://en.wikipedia.org/wiki/Josie_Kins',
+    external: true,
+    type: 'article',
+  },
+  {
+    name: 'DMT Entities: Dysconnective Failure to Recognise Self by Einar Moback',
+    href: 'https://substack.com/@moback/p-183718404',
+    external: true,
+    type: 'article',
+  },
   {
     name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025)',
     href: 'https://schedule.sxsw.com/2025/contributors/2204921',
@@ -176,11 +204,30 @@ export function Home() {
                 />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white group-hover:underline mb-1 truncate pr-6">
-                  {project.name}
-                </h3>
+                <div className="flex flex-wrap items-center gap-2 mb-1 pr-6">
+                  <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white group-hover:underline">
+                    {project.name}
+                  </h3>
+                  {project.roles?.length === 1 && (
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
+                      {project.roles[0]}
+                    </span>
+                  )}
+                </div>
+                {project.roles && project.roles.length > 1 && (
+                  <div className="flex flex-wrap gap-2 mb-2">
+                    {project.roles.map((role: string) => (
+                      <span key={role} className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
+                        {role}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <p className="text-xs uppercase tracking-wider text-white/50 mb-3 font-medium">{project.dates}</p>
                 <p className="text-base text-white/80 leading-relaxed font-light whitespace-pre-line">{project.description}</p>
+                {project.warning && (
+                  <p className="text-sm text-white/40 italic mt-3">{project.warning}</p>
+                )}
               </div>
             </a>
           ))}
@@ -196,7 +243,7 @@ export function Home() {
       >
         <div className="max-w-5xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
-            Media References
+            Literature & Media References
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -231,7 +278,7 @@ export function Home() {
                     {ref.name}
                   </span>
                   {ref.external && (
-                    <ExternalLink size={14} className="ml-auto text-white/20 group-hover:text-accent/50 transition-colors" />
+                    <ExternalLink size={14} className="ml-auto flex-shrink-0 text-white/20 group-hover:text-accent/50 transition-colors" />
                   )}
                 </Wrapper>
               )
