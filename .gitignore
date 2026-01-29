@@ -31,3 +31,20 @@ npm-debug.log*
 old site/
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+
+# Python virtual environment
+.venv/
+
+# Original source files (not part of build)
+llm-comics/
+
+# Working files for other projects
+pdf-images/
+pdf-images-png/
+watercolor-stains/
+*.py
+HB-*.txt
+image-mapping.txt
+homebrewery-additions.txt
+psychoactive-substances-faerun-additions.md
+IMG_*.webp

@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageCarouselProps {
   images: string[];
@@ -40,36 +41,31 @@ export function ImageCarousel({ images, accentColor, onImageClick }: ImageCarous
   };
 
   return (
-    <div className="relative mb-6 px-9">
+    <div className="relative mb-6 px-9 group/carousel">
       {/* Previous arrow */}
       <button
         onClick={() => scroll('prev')}
-        className={`absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-300 font-bold transition-all z-10 hover:text-white hover:scale-105 ${
+        className={`absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-300 bg-black/60 border border-white/10 shadow-lg transition-all z-10 hover:text-white hover:scale-110 hover:bg-black/80 ${
           showPrev ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{
-          background: 'rgba(30, 41, 59, 0.8)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-        }}
         aria-label="Previous thumbnails"
       >
-        &lt;
+        <ChevronLeft size={18} />
       </button>
 
       {/* Thumbnail strip */}
       <div
         ref={scrollRef}
-        className="overflow-x-auto whitespace-nowrap pb-2"
+        className="overflow-x-auto whitespace-nowrap pb-2 scrollbar-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {images.map((img, idx) => (
           <div
             key={idx}
             onClick={() => onImageClick(idx)}
-            className="inline-block mr-3 cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all hover:-translate-y-0.5"
-            style={{
-              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
+            className="inline-block mr-3 cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg"
+            style={{ 
+              borderColor: 'transparent'
             }}
             onMouseEnter={(e) => {
               (e.currentTarget as HTMLElement).style.borderColor = accentColor;
@@ -90,17 +86,12 @@ export function ImageCarousel({ images, accentColor, onImageClick }: ImageCarous
       {/* Next arrow */}
       <button
         onClick={() => scroll('next')}
-        className={`absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-300 font-bold transition-all z-10 hover:text-white hover:scale-105 ${
+        className={`absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-300 bg-black/60 border border-white/10 shadow-lg transition-all z-10 hover:text-white hover:scale-110 hover:bg-black/80 ${
           showNext ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{
-          background: 'rgba(30, 41, 59, 0.8)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'
-        }}
         aria-label="Next thumbnails"
       >
-        &gt;
+        <ChevronRight size={18} />
       </button>
     </div>
   );

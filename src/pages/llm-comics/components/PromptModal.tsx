@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import styles from '../LLMComics.module.css';
+import { X, Copy, Check } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface PromptModalProps {
   isOpen: boolean;
@@ -41,57 +42,40 @@ export function PromptModal({ isOpen, title, content, onClose }: PromptModalProp
 
   return (
     <div
-      className="fixed inset-0 z-[9000] flex items-center justify-center transition-opacity"
-      style={{ background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(8px)' }}
+      className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm transition-opacity"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div
-        className="relative rounded-2xl p-8 max-w-[650px] w-[90%] transition-transform"
-        style={{
-          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(30, 41, 65, 0.9))',
-          border: '1px solid rgba(71, 85, 105, 0.8)',
-          boxShadow: '0 12px 24px rgba(0, 0, 0, 0.3)'
-        }}
-      >
+      <div className="relative rounded-2xl p-8 max-w-[650px] w-[90%] bg-black/90 border border-white/10 shadow-2xl transition-transform animate-in fade-in zoom-in-95 duration-200">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-slate-400 text-2xl transition-all hover:text-white hover:bg-slate-600/20"
+          className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
           aria-label="Close Modal"
         >
-          ×
+          <X size={20} />
         </button>
 
         {/* Title */}
-        <h2 className={`text-2xl font-bold text-center mb-6 ${styles.gradientTitle}`}>
+        <h2 className="text-2xl font-bold text-center mb-6 text-accent drop-shadow-sm">
           {title}
         </h2>
 
         {/* Content */}
-        <pre
-          className={`p-5 rounded-xl mb-6 text-sm text-indigo-200 whitespace-pre-wrap max-h-[450px] overflow-y-auto ${styles.customScrollbar}`}
-          style={{
-            background: 'rgba(15, 23, 42, 0.6)',
-            border: '1px solid rgba(71, 85, 105, 0.8)',
-            fontFamily: '"Cascadia Code", "Fira Code", "JetBrains Mono", monospace',
-            lineHeight: 1.6,
-            boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2)'
-          }}
-        >
+        <pre className="p-5 rounded-xl mb-6 text-sm text-indigo-200 whitespace-pre-wrap max-h-[450px] overflow-y-auto bg-black/40 border border-white/5 shadow-inner font-mono leading-relaxed scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
           {content}
         </pre>
 
         {/* Copy button */}
         <button
           onClick={handleCopy}
-          className="w-full py-3 px-5 rounded-xl text-white font-semibold transition-all hover:-translate-y-0.5"
-          style={{
-            background: copied
-              ? 'linear-gradient(90deg, #06b6d4, #22d3ee)'
-              : 'linear-gradient(90deg, #10b981, #34d399)',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
-          }}
+          className={cn(
+            "w-full py-3 px-5 rounded-xl text-white font-semibold transition-all hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2 border border-white/10",
+            copied 
+              ? "bg-accent hover:bg-accent/90" 
+              : "bg-black/40 hover:bg-accent/20 hover:border-accent/50"
+          )}
         >
+          {copied ? <Check size={18} /> : <Copy size={18} />}
           {copied ? 'Copied!' : 'Copy Content'}
         </button>
       </div>
