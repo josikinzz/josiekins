@@ -22,6 +22,7 @@ import { Morality } from '@/pages/prototheism/Morality'
 import { Purpose } from '@/pages/prototheism/Purpose'
 import { Reverence } from '@/pages/prototheism/Reverence'
 import { Suffering } from '@/pages/prototheism/Suffering'
+import { LLMComics } from '@/pages/llm-comics'
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,8 @@ export const router = createBrowserRouter([
       // Articles
       { path: 'deeper-learning', element: <DeeperLearning /> },
       { path: 'mckenna-syndrome', element: <MckennaSyndrome /> },
+      // LLM Comics
+      { path: 'llm-comics', element: <LLMComics /> },
       // Prototheism
       { path: 'prototheism', element: <Prototheism /> },
       { path: 'prototheism/creation', element: <Creation /> },

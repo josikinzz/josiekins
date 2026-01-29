@@ -65,6 +65,13 @@ export function Misc() {
           />
 
           <MiscCard
+            title="LLM Self-Models Dashboard"
+            description="An exploration of how different Large Language Models conceptualize their own existence through comic scripts. Features comparative analysis of ChatGPT, DeepSeek, Gemini, Claude, and Grok's self-described personalities, struggles, and identities."
+            imageSrc="/images/llm-comics/chiplogo1.webp"
+            href="/llm-comics"
+          />
+
+          <MiscCard
             title="DisregardEveryThingISay YouTube Channel"
             description="My second YouTube channel. I use this as a place to put silly, low effort, or unscripted videos that do not fit on my main channel."
             imageSrc="/images/shared/Screenshot+2024-01-11+at+6.09.20+PM.webp"
