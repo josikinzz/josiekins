@@ -106,10 +106,12 @@
    FLOATING ANIMATION - Controls:
    --float-distance: how far it moves (default: 8px)
    --float-duration: how long one cycle takes (default: 3s)
+   Note: Removed translate(-50%, -50%) centering to fix Safari
+   positioning bug. Use calc() offsets in positioning instead.
    ═══════════════════════════════════════════════════════════ */
 @keyframes float {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -50%) translateY(calc(var(--float-distance, 8px) * -1)); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(var(--float-distance, 8px) * -1)); }
 }
 
 .animate-float {

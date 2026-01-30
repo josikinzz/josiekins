@@ -171,9 +171,11 @@ export function Home() {
               className="absolute pointer-events-none animate-float"
               style={{
                 // ▼▼▼ POSITION & SIZE CONTROLS ▼▼▼
-                left: '80%',      // X position (0% = left edge, 100% = right edge)
-                top: '30%',       // Y position (0% = top edge, 100% = bottom edge)
-                width: '27%',     // Size (% of container width)
+                // Using calc() offsets instead of transform centering (fixes Safari bug)
+                // The offset (13.5%) is half the width (27%) to center the element
+                left: 'calc(80% - 13.5%)',   // X position (centered at 80%)
+                top: 'calc(30% - 13.5%)',    // Y position (centered at 30%)
+                width: '27%',                // Size (% of container width)
                 // ▼▼▼ FLOAT ANIMATION CONTROLS ▼▼▼
                 '--float-distance': '8px',  // How far it bobs (try 5px-15px)
                 '--float-duration': '6s',   // Speed of one cycle (try 2s-5s)
