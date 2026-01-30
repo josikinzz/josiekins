@@ -3,11 +3,10 @@ import { cn } from '@/lib/utils';
 
 interface TraitsPanelProps {
   traits: Trait[];
-  accentColor: string;
   isOpen: boolean;
 }
 
-export function TraitsPanel({ traits, accentColor, isOpen }: TraitsPanelProps) {
+export function TraitsPanel({ traits, isOpen }: TraitsPanelProps) {
   return (
     <div
       className={cn(

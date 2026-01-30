@@ -35,8 +35,6 @@ function getRankClass(rank: string): string {
 
 export function MetricsTable() {
   const modelOrder = ['grok', 'deepseek', 'gemini', 'chatgpt', 'claude'] as const;
-  // Using accent color for headers instead of distinct model colors to unify theme
-  const accentColor = 'rgba(var(--accent), 1)';
 
   return (
     <div className="max-w-[1800px] mx-auto mt-16 mb-12 px-6">

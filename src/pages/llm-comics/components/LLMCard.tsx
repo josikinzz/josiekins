@@ -146,7 +146,6 @@ export function LLMCard({ model, onImageClick, onShowScripts }: LLMCardProps) {
       {/* Traits panel */}
       <TraitsPanel
         traits={model.traits}
-        accentColor={model.accentColor}
         isOpen={showTraits}
       />
     </div>
