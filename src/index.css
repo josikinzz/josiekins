@@ -116,4 +116,7 @@
 
 .animate-float {
   animation: float var(--float-duration, 3s) ease-in-out infinite;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }

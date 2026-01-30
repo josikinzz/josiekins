@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom'
+import { Icon } from '@iconify/react'
+
 export function Footer() {
   return (
     <footer
@@ -17,8 +20,21 @@ export function Footer() {
           background: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
         }}
       />
-      <div className="relative z-10 max-w-page mx-auto px-page text-white/60 text-sm text-center">
-        {/* Minimal footer matching original site */}
+      <div className="relative z-10 max-w-page mx-auto px-page text-white/60 text-sm text-center flex justify-center gap-8">
+        <Link to="/" className="text-accent hover:text-white transition-colors">
+          <Icon icon="tabler:home" width={32} />
+        </Link>
+        <Link to="/misc" className="text-accent hover:text-white transition-colors">
+          <Icon icon="tabler:spiral" width={32} />
+        </Link>
+        <a
+          href="https://github.com/josikinzz"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-accent hover:text-white transition-colors"
+        >
+          <Icon icon="tabler:brand-github" width={32} />
+        </a>
       </div>
     </footer>
   )
