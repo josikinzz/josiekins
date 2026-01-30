@@ -101,3 +101,17 @@
     @apply font-heading;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   FLOATING ANIMATION - Controls:
+   --float-distance: how far it moves (default: 8px)
+   --float-duration: how long one cycle takes (default: 3s)
+   ═══════════════════════════════════════════════════════════ */
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -50%) translateY(calc(var(--float-distance, 8px) * -1)); }
+}
+
+.animate-float {
+  animation: float var(--float-duration, 3s) ease-in-out infinite;
+}

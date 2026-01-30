@@ -154,11 +154,36 @@ export function Home() {
         bottomFadeOpacity={1}
       >
         <div className="max-w-4xl mx-auto text-white text-center">
-          <img
-            src="/images/shared/Josie_+(2).webp"
-            alt="Josie Kins"
-            className="max-w-md w-full mx-auto mb-8 object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:scale-[1.02] transition-transform duration-700 ease-in-out"
-          />
+          {/* Josie image with animated eyecon overlay */}
+          <div className="relative max-w-md w-full mx-auto mb-8 overflow-visible">
+            {/* Base image */}
+            <img
+              src="/images/shared/Josie_+(2).webp"
+              alt="Josie Kins"
+              className="w-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:scale-[1.02] transition-transform duration-700 ease-in-out"
+            />
+            {/* ═══════════════════════════════════════════════════════════
+                EYECON OVERLAY CONTROLS - Edit these values to adjust:
+                ═══════════════════════════════════════════════════════════ */}
+            <img
+              src="/animated_eyecon.webp"
+              alt=""
+              className="absolute pointer-events-none animate-float"
+              style={{
+                // ▼▼▼ POSITION & SIZE CONTROLS ▼▼▼
+                left: '80%',      // X position (0% = left edge, 100% = right edge)
+                top: '30%',       // Y position (0% = top edge, 100% = bottom edge)
+                width: '27%',     // Size (% of container width)
+                // ▼▼▼ FLOAT ANIMATION CONTROLS ▼▼▼
+                '--float-distance': '8px',  // How far it bobs (try 5px-15px)
+                '--float-duration': '6s',   // Speed of one cycle (try 2s-5s)
+                // ▼▼▼ DROP SHADOW CONTROL ▼▼▼
+                filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.9))',
+                // Format: drop-shadow(x-offset y-offset blur color)
+                // ▲▲▲ CONTROLS ▲▲▲
+              } as React.CSSProperties}
+            />
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 text-accent tracking-tight drop-shadow-sm pb-2">
             JOSIE KINS INFO
           </h1>
