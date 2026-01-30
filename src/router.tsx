@@ -11,6 +11,7 @@ import { MJV52 } from '@/pages/galleries/MJV52'
 import { StyleGAN2 } from '@/pages/galleries/StyleGAN2'
 import { StyleGAN3 } from '@/pages/galleries/StyleGAN3'
 import { DeeperLearning } from '@/pages/articles/DeeperLearning'
+import { DMTFieldGuide } from '@/pages/articles/DMTFieldGuide'
 import { MckennaSyndrome } from '@/pages/articles/MckennaSyndrome'
 import { Prototheism } from '@/pages/prototheism/Prototheism'
 import { Creation } from '@/pages/prototheism/Creation'
@@ -42,6 +43,7 @@ export const router = createBrowserRouter([
       { path: 'ai-psychedelia/stylegan2', element: <StyleGAN2 /> },
       // Articles
       { path: 'deeper-learning', element: <DeeperLearning /> },
+      { path: 'dmt-field-guide', element: <DMTFieldGuide /> },
       { path: 'mckenna-syndrome', element: <MckennaSyndrome /> },
       // LLM Comics
       { path: 'llm-comics', element: <LLMComics /> },

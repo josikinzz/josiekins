@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/Section'
-import { ExternalLink, Newspaper, Video, Link as LinkIcon } from 'lucide-react'
+import { ExternalLink, Newspaper, Video, Link as LinkIcon, Globe, ScrollText, PenLine } from 'lucide-react'
+import { Icon as IconifyIcon } from '@iconify/react'
 
 const projects = [
   {
@@ -79,40 +80,46 @@ const projects = [
 
 const mediaReferences = [
   {
+    name: 'The Illustrated Field Guide to DMT Entities by David Jay Brown & Sara Phinn Huntley',
+    href: '/dmt-field-guide',
+    external: false,
+    type: 'book',
+  },
+  {
     name: 'Josie Kins (Wikipedia)',
     href: 'https://en.wikipedia.org/wiki/Josie_Kins',
     external: true,
-    type: 'article',
+    type: 'wikipedia',
   },
   {
     name: 'DMT Entities: Dysconnective Failure to Recognise Self by Einar Moback',
     href: 'https://substack.com/@moback/p-183718404',
     external: true,
-    type: 'article',
+    type: 'essay',
   },
   {
     name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025)',
     href: 'https://schedule.sxsw.com/2025/contributors/2204921',
     external: true,
-    type: 'video',
+    type: 'talk',
   },
   {
     name: 'Deeper Learning with Psychedelics by David J. Blacker',
     href: '/deeper-learning',
     external: false,
-    type: 'article',
+    type: 'book',
   },
   {
     name: 'What Hallucinogens Will Make You See (Nautilus)',
     href: 'https://nautil.us/what-hallucinogens-will-make-you-see-308247/',
     external: true,
-    type: 'article',
+    type: 'magazine',
   },
   {
     name: 'Double Blind Magazine article/interview',
     href: 'https://doubleblindmag.com/ai-can-now-generate-dmt-visuals/',
     external: true,
-    type: 'article',
+    type: 'magazine',
   },
   {
     name: "Video shows 'most accurate' representation of what psychedelic visuals look like (UNILAD)",
@@ -124,7 +131,7 @@ const mediaReferences = [
     name: 'AI Fed Psychedelic Images Generates DMT Visuals (Wholecelium)',
     href: 'https://www.wholecelium.com/blog/ai-fed-psychedelic-images-generates-dmt-visuals/',
     external: true,
-    type: 'article',
+    type: 'blog',
   },
   {
     name: 'How does one see the world under the influence of hallucinogens? A scientist created accurate video (Denik.cz)',
@@ -275,7 +282,19 @@ export function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {mediaReferences.map((ref) => {
-              const Icon = ref.type === 'video' ? Video : ref.type === 'article' ? Newspaper : LinkIcon
+              const getIcon = () => {
+                switch (ref.type) {
+                  case 'video': return Video
+                  case 'magazine': return Newspaper
+                  case 'wikipedia': return Globe
+                  case 'essay': return ScrollText
+                  case 'blog': return PenLine
+                  case 'book': return null
+                  case 'talk': return null
+                  default: return LinkIcon
+                }
+              }
+              const IconComponent = getIcon()
 
               const Wrapper = ({ children }: { children: React.ReactNode }) =>
                 ref.external ? (
@@ -299,7 +318,13 @@ export function Home() {
               return (
                 <Wrapper key={ref.name}>
                   <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-colors duration-300 flex-shrink-0">
-                    <Icon size={20} />
+                    {ref.type === 'book' ? (
+                      <IconifyIcon icon="tabler:book" width={20} height={20} />
+                    ) : ref.type === 'talk' ? (
+                      <IconifyIcon icon="tabler:microphone" width={20} height={20} />
+                    ) : (
+                      IconComponent && <IconComponent size={20} />
+                    )}
                   </div>
                   <span className="text-white/90 group-hover:text-accent transition-colors font-medium">
                     {ref.name}
