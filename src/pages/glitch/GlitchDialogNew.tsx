@@ -150,12 +150,20 @@ export function GlitchDialog() {
   const [exitCountdown, setExitCountdown] = useState<number | null>(null);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isEyeHovered, setIsEyeHovered] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const charCountRef = useRef(0);
   const exitTimersRef = useRef<NodeJS.Timeout[]>([]);
   const hasStartedExitRef = useRef(false);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const currentNode: DialogueNode = DIALOGUE_TREE[state.currentNode];
+
+  // Preload the large animated WebP before showing content
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setIsImageLoaded(true);
+    img.src = '/animated_eyecon_500_q50.webp';
+  }, []);
 
   // Debug: Log current state (development only)
   useEffect(() => {
@@ -415,6 +423,15 @@ export function GlitchDialog() {
     return corruptText(label, currentNode.corruption === 'maximum' ? 'light' : 'none');
   };
 
+  // Show loading indicator until image is ready
+  if (!isImageLoaded) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-3 h-3 rounded-full bg-purple-500 animate-pulse" />
+      </div>
+    );
+  }
+
   return (
     <div className={`min-h-screen bg-black text-white font-mono overflow-hidden ${isMaxCorruption ? 'animate-glitch-chaos' : ''}`}>
       {/* Subtle Chromatic Aberration Overlay for max corruption */}
@@ -437,7 +454,7 @@ export function GlitchDialog() {
           style={floatStyle}
         >
           <img
-            src="/animated_eyecon.webp"
+            src="/animated_eyecon_500_q50.webp"
             alt="The Entity"
             className={`max-h-full w-auto object-contain cursor-pointer ${animationClass}`}
             style={eyeFilterStyle}
