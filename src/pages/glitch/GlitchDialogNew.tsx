@@ -460,6 +460,7 @@ export function GlitchDialog() {
         background="image"
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
+        headerOffset
         className="h-screen flex flex-col items-center justify-center relative"
       >
         {/* Corruption Meter */}

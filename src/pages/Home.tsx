@@ -160,6 +160,7 @@ export function Home() {
         backgroundOverlay
         bottomFadeOpacity={1}
         bottomFadeHeight="40%"
+        headerOffset
       >
         <div className="max-w-4xl mx-auto text-white text-center overflow-visible">
           {/* Josie image with animated eyecon overlay */}

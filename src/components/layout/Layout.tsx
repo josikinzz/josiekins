@@ -10,7 +10,7 @@ export function Layout({ children, transparentHeader = false }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header transparent={transparentHeader} />
-      <main className={`flex-1 overflow-visible ${transparentHeader ? 'pt-16 md:pt-20' : ''}`}>{children}</main>
+      <main className="flex-1 overflow-visible">{children}</main>
       <Footer />
     </div>
   )

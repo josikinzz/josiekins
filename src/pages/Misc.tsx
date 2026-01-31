@@ -60,6 +60,7 @@ export function Misc() {
         background="image"
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
+        headerOffset
       >
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-light font-heading text-accent mb-4 tracking-[0.2em] drop-shadow-md">

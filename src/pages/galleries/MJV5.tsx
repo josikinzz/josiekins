@@ -73,6 +73,7 @@ export function MJV5() {
         background="image"
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
+        headerOffset
       >
         <Link to="/ai-psychedelia" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide">
           &larr; Back to AI Psychedelia

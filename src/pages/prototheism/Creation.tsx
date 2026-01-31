@@ -14,6 +14,7 @@ export function Creation({ hideBackButton }: CreationProps) {
         backgroundImage="/images/prototheism/geometry+circle+wall.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

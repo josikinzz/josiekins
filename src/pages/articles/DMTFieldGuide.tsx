@@ -19,6 +19,7 @@ export function DMTFieldGuide() {
       background="image"
       backgroundImage="/images/articles/deeper-learning/eye+thingy+cool.webp"
       backgroundOverlay
+      headerOffset
     >
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">

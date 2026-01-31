@@ -14,6 +14,7 @@ export function Morality({ hideBackButton }: MoralityProps) {
         backgroundImage="/images/prototheism/plants.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

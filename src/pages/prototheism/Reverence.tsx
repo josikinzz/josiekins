@@ -14,6 +14,7 @@ export function Reverence({ hideBackButton }: ReverenceProps) {
         backgroundImage="/images/shared/eye+thingy+cool.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

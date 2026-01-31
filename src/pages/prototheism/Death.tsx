@@ -14,6 +14,7 @@ export function Death({ hideBackButton }: DeathProps) {
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

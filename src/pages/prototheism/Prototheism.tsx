@@ -22,6 +22,7 @@ export function Prototheism() {
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
         bottomFadeOpacity={1}
+        headerOffset
       >
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <img

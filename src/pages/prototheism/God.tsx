@@ -14,6 +14,7 @@ export function God({ hideBackButton }: GodProps) {
         backgroundImage="/images/prototheism/eye+mandella.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

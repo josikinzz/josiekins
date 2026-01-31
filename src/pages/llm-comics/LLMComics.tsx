@@ -67,6 +67,7 @@ export function LLMComics() {
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
         bottomFadeOpacity={1}
+        headerOffset
       >
         {/* Logo */}
         <div className="text-center pb-8 animate-in fade-in slide-in-from-top-4 duration-700">

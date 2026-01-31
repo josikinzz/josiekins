@@ -14,6 +14,7 @@ export function Suffering({ hideBackButton }: SufferingProps) {
         backgroundImage="/images/shared/geometry+circle+wall.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

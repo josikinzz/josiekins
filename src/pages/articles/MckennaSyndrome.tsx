@@ -8,6 +8,7 @@ export function MckennaSyndrome() {
         background="image"
         backgroundImage="/images/articles/mckenna-syndrome/eye+thingy+cool.webp"
         backgroundOverlay
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white text-center">
           <h1 className="text-4xl font-bold text-accent mb-4">McKenna Syndrome</h1>

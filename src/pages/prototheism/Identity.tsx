@@ -14,6 +14,7 @@ export function Identity({ hideBackButton }: IdentityProps) {
         backgroundImage="/images/prototheism/sacred+wall.webp"
         backgroundOverlay
         className="!pb-0"
+        headerOffset
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (

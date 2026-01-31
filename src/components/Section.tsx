@@ -13,6 +13,7 @@ interface SectionProps {
   bottomFadeHeight?: string
   topFadeOpacity?: number
   topFadeHeight?: string
+  headerOffset?: boolean
 }
 
 const paddingMap = {
@@ -42,6 +43,7 @@ export function Section({
   bottomFadeHeight = '40%',
   topFadeOpacity = 1,
   topFadeHeight = '40%',
+  headerOffset = false,
 }: SectionProps) {
   const isImageBackground = background === 'image' && backgroundImage
 
@@ -51,6 +53,7 @@ export function Section({
       className={cn(
         'relative w-full overflow-visible',
         paddingMap[verticalPadding],
+        headerOffset && 'pt-20 md:pt-24',
         !isImageBackground && backgroundMap[background],
         className
       )}

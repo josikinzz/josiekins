@@ -47,6 +47,7 @@ export function AIPsychedelia() {
         background="image"
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
+        headerOffset
       >
         <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] drop-shadow-md">
           AI Psychedelia
