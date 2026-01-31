@@ -49,7 +49,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        'relative w-full',
+        'relative w-full overflow-visible',
         paddingMap[verticalPadding],
         !isImageBackground && backgroundMap[background],
         className
@@ -91,7 +91,7 @@ export function Section({
       {/* Content container */}
       <div
         className={cn(
-          'relative z-10',
+          'relative z-10 overflow-visible',
           !fullWidth && 'max-w-page mx-auto px-page'
         )}
       >

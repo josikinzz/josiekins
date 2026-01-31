@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/Section'
 
-export function Identity() {
+interface IdentityProps {
+  hideBackButton?: boolean;
+}
+
+export function Identity({ hideBackButton }: IdentityProps) {
   return (
     <div className="">
       <Section
@@ -11,9 +15,11 @@ export function Identity() {
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
-          <Link to="/prototheism" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide text-sm uppercase">
-            &larr; Back to Prototheism
-          </Link>
+          {!hideBackButton && (
+            <Link to="/prototheism" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide text-sm uppercase">
+              &larr; Back to Prototheism
+            </Link>
+          )}
 
           <img
             src="/images/prototheism/identity.webp"

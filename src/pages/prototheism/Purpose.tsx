@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Section } from '@/components/Section'
 
-export function Purpose() {
+interface PurposeProps {
+  hideBackButton?: boolean;
+}
+
+export function Purpose({ hideBackButton }: PurposeProps) {
   return (
     <div className="">
       <Section
@@ -11,9 +15,11 @@ export function Purpose() {
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
-          <Link to="/prototheism" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide text-sm uppercase">
-            &larr; Back to Prototheism
-          </Link>
+          {!hideBackButton && (
+            <Link to="/prototheism" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide text-sm uppercase">
+              &larr; Back to Prototheism
+            </Link>
+          )}
 
           <img
             src="/images/prototheism/purpose.webp"

@@ -92,8 +92,8 @@ export function Lightbox({ isOpen, images, currentIndex, onClose, onNavigate }: 
                     : 'opacity-60 hover:opacity-100 hover:-translate-y-1'
                 }`}
               >
-                <img 
-                  src={img} 
+                <img
+                  src={img}
                   alt={`Thumbnail ${idx + 1}`}
                   className="w-full h-full object-cover"
                 />

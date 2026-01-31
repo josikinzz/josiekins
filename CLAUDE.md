@@ -26,7 +26,7 @@ The `old site/` folder contains the exported Squarespace site with HTML files an
 src/
 ├── main.tsx                    # React entry point
 ├── App.tsx                     # Root app component
-├── router.tsx                  # Route definitions (25 routes)
+├── router.tsx                  # Route definitions (26+ routes)
 ├── index.css                   # Global styles & Tailwind
 ├── components/
 │   ├── layout/
@@ -44,7 +44,8 @@ src/
 │   ├── galleries/              # 8 gallery pages
 │   ├── articles/               # 3 article pages
 │   ├── prototheism/            # 10 prototheism pages
-│   └── llm-comics/             # LLM Dashboard + components + data
+│   ├── llm-comics/             # LLM Dashboard + components + data
+│   └── glitch/                 # Glitch dialog system + tenet routes
 └── lib/utils.ts                # Utility functions
 
 public/images/
@@ -72,6 +73,8 @@ public/images/
 - `/llm-comics` - LLM Self-Models Dashboard
 - `/prototheism` - Prototheism main hub
 - `/prototheism/creation` through `/prototheism/suffering` - 9 tenet pages
+- `/glitch` - Glitch dialog system (interactive dialogue tree with multiple exit paths)
+- `/glitch/{tenet}` - Tenet pages accessed via glitch (hides back navigation)
 
 ---
 
@@ -210,15 +213,34 @@ public/images/
 - Prototheism banner linking to /prototheism
 - Accent purple color (#a855f7) for titles and links
 
-**Pages (25 total):**
+**Pages (26 total):**
 - Home page (hero with animated eyecon, MY WORK, PROJECTS, COLLABORATORS + Prototheism banner)
 - Misc page (4 card links)
 - 8 Gallery pages (AI Psychedelia hub, Magnific, MJ-V4 Initial/Improved, MJ-V5, MJ-V5.2, StyleGAN2, StyleGAN3)
 - 3 Article pages (Deeper Learning, McKenna Syndrome, DMT Field Guide)
 - 10 Prototheism pages (main hub + 9 tenets)
 - 1 Dashboard page (LLM Comics - AI model self-concepts)
+- 1 Interactive page (Glitch Dialog - cryptic dialogue tree with 10 exit destinations)
+
+**Glitch Dialog System (`/glitch`):**
+Interactive dialogue tree with cryptic messages, corruption effects, and multiple exit destinations:
+- `exit_llm` → `/llm-comics` (decode path: layer1→5 → ENTER)
+- `exit_psychedelia` → `/ai-psychedelia` (from abyss → "SEE")
+- `exit_faerun` → PDF (rare alchemy symbol `⚗◊⚗` at converge1)
+- `exit_dmt_guide` → `/dmt-field-guide` (from void_deep → "GREET")
+- `exit_deeper_learning` → `/deeper-learning` (from static → "LEARN")
+- `exit_github` → `github.com/josikinzz` (from grid → "SOURCE")
+- `exit_wikipedia` → `en.wikipedia.org/wiki/Josie_Kins` (from aware_1 → "RECORD")
+- `exit_mckenna` → `/mckenna-syndrome` (from chaos_1 → "DIAGNOSE")
+- `exit_standard` → `/` (most common paths)
+- `exit_tenet_*` → `/glitch/{tenet}` (streak-based routing)
 
 **Recent Updates (2026-01-28 to 2026-01-30):**
+- Added Glitch Dialog system (/glitch) - interactive dialogue tree with:
+  - Cryptic messages with corruption effects (none, light, heavy, maximum)
+  - Hidden text reveals on hover
+  - 10 exit destinations linking to various site pages and external URLs
+  - Streak-based tenet routing for prototheism pages
 - Added LLM Comics Dashboard (/llm-comics) - comprehensive page with 5 AI models:
   - ChatGPT 4o, DeepSeek R1, Gemini 2.5 Pro, Claude 3.7, Grok 3
   - Model bios, personality traits, comic image galleries, metrics tables
@@ -237,7 +259,7 @@ public/images/
 - Added McKenna Syndrome banner (josie+and+emily+it+came+to+me+in+a+trip.png) to all 10 Prototheism pages
 - Updated all tenet page content to match old site exactly
 
-Build verified working: 1766 modules, 660KB JS (190KB gzip), 49KB CSS
+Build verified working: 1773 modules, ~17KB GlitchDialog chunk, 59KB CSS
 
 **Blockers**: None
 

@@ -161,7 +161,7 @@ export function Home() {
         bottomFadeOpacity={1}
         bottomFadeHeight="40%"
       >
-        <div className="max-w-4xl mx-auto text-white text-center">
+        <div className="max-w-4xl mx-auto text-white text-center overflow-visible">
           {/* Josie image with animated eyecon overlay */}
           <div className="relative max-w-md w-full mx-auto mb-4 overflow-visible">
             {/* Base image */}
@@ -175,28 +175,52 @@ export function Home() {
               } as React.CSSProperties}
             />
             {/* ═══════════════════════════════════════════════════════════
-                EYECON OVERLAY CONTROLS - Edit these values to adjust:
+                EYECON OVERLAY CONTROLS
                 ═══════════════════════════════════════════════════════════ */}
-            <img
-              src="/animated_eyecon.webp"
-              alt=""
-              className="absolute pointer-events-none animate-float"
+            {/* Glow container - extra padding to prevent glow clipping */}
+            <div
+              className="absolute overflow-visible"
               style={{
-                // ▼▼▼ POSITION & SIZE CONTROLS ▼▼▼
-                // Using calc() offsets instead of transform centering (fixes Safari bug)
-                // The offset (13.5%) is half the width (27%) to center the element
-                left: 'calc(80% - 13.5%)',   // X position (centered at 80%)
-                top: 'calc(30% - 13.5%)',    // Y position (centered at 30%)
-                width: '27%',                // Size (% of container width)
-                // ▼▼▼ FLOAT ANIMATION CONTROLS ▼▼▼
-                '--float-distance': '8px',  // How far it bobs (try 5px-15px)
-                '--float-duration': '6s',   // Speed of one cycle (try 2s-5s)
-                // ▼▼▼ DROP SHADOW CONTROL ▼▼▼
-                filter: 'drop-shadow(0 0 20px rgba(168, 85, 247, 0.9))',
-                // Format: drop-shadow(x-offset y-offset blur color)
-                // ▲▲▲ CONTROLS ▲▲▲
-              } as React.CSSProperties}
-            />
+                left: 'calc(80% - 13.5% - 24px)',
+                top: 'calc(30% - 13.5% - 24px)',
+                width: 'calc(27% + 48px)',
+                height: 'calc(27% + 48px)',
+                zIndex: 10,
+              }}
+            >
+              <Link
+                to="/glitch"
+                className="absolute inset-6 cursor-pointer animate-float"
+                style={{
+                  '--float-distance': '8px',
+                  '--float-duration': '6s',
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    const direction = Math.random() > 0.5 ? 360 : -360;
+                    img.style.transition = 'transform 0.6s ease-in-out';
+                    img.style.transform = `rotate(${direction}deg)`;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  const img = e.currentTarget.querySelector('img');
+                  if (img) {
+                    img.style.transition = 'transform 0.4s ease-out';
+                    img.style.transform = 'rotate(0deg)';
+                  }
+                }}
+              >
+                <img
+                  src="/animated_eyecon.webp"
+                  alt="Click to enter"
+                  className="w-full h-full object-contain"
+                  style={{
+                    filter: 'drop-shadow(0 0 8px rgba(168, 85, 247, 0.95))',
+                  } as React.CSSProperties}
+                />
+              </Link>
+            </div>
           </div>
           <div className="max-w-2xl mx-auto space-y-4 relative py-8 px-4 rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_70%)]">
             <p className="text-xl text-white/90 leading-relaxed italic drop-shadow-md">
