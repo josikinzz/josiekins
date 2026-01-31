@@ -53,7 +53,7 @@ export function Section({
       className={cn(
         'relative w-full overflow-visible',
         paddingMap[verticalPadding],
-        headerOffset && 'pt-20 md:pt-24',
+        headerOffset && 'pt-28 md:pt-32',
         !isImageBackground && backgroundMap[background],
         className
       )}

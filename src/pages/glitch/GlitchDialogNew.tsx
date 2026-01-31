@@ -87,7 +87,7 @@ const CorruptionMeter = memo(function CorruptionMeter({ level }: { level: Corrup
   const statusSymbol = level === 'maximum' ? '⛧' : level === 'heavy' ? '◬' : level === 'light' ? '◊' : '○';
 
   return (
-    <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:left-1 md:translate-x-0 z-40 flex flex-col gap-1 w-64 font-mono tracking-wider select-none mix-blend-screen">
+    <div className="fixed top-20 left-1/2 -translate-x-1/2 md:absolute md:-top-12 md:left-1 md:translate-x-0 z-40 flex flex-col gap-1 w-64 font-mono tracking-wider select-none mix-blend-screen">
 
       {/* Symbol Row */}
       <div className="flex justify-between items-center px-1">
@@ -226,8 +226,8 @@ export function GlitchDialog() {
   const [careOffset, setCareOffset] = useState(0);  // How much corruption has been reduced by care
   const [poops, setPoops] = useState<PoopData[]>([]);
   const [showHearts, setShowHearts] = useState(false);
-  const [careMessage, setCareMessage] = useState<string | null>(null);
-  const [isDragOver, setIsDragOver] = useState(false);
+  const [careMessage, setCareMessage] = useState<React.ReactNode | null>(null);
+  const [dragOverAction, setDragOverAction] = useState<'feed' | 'pet' | 'clean' | null>(null);
 
   const [isImageLoaded, setIsImageLoaded] = useState(() => {
     // Check if image is already cached on initial render
@@ -242,7 +242,7 @@ export function GlitchDialog() {
   const exitTimersRef = useRef<NodeJS.Timeout[]>([]);
   const hasStartedExitRef = useRef(false);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const prevCorruptionRef = useRef<CorruptionLevel>('none');
+  const prevCorruptionRef = useRef<CorruptionLevel | null>(null);  // null = first render
 
   const currentNode: DialogueNode = DIALOGUE_TREE[state.currentNode];
 
@@ -300,8 +300,14 @@ export function GlitchDialog() {
   // Handle Maximum Corruption Event (100%)
   const [isMaxCorruption, setIsMaxCorruption] = useState(false);
 
-  // Spawn poop when dialogue corruption increases
+  // Spawn poop when dialogue corruption increases (skip first render)
   useEffect(() => {
+    // Skip first render - don't spawn poop on initial load
+    if (prevCorruptionRef.current === null) {
+      prevCorruptionRef.current = currentNode.corruption;
+      return;
+    }
+
     const prevValue = getCorruptionValue(prevCorruptionRef.current);
     const newValue = getCorruptionValue(currentNode.corruption);
 
@@ -309,8 +315,8 @@ export function GlitchDialog() {
       // Spawn a poop
       setPoops(prev => [...prev, {
         id: `poop-${Date.now()}`,
-        x: 20 + Math.random() * 60,  // 20% to 80% from left
-        y: 70 + Math.random() * 20,  // 70% to 90% from top
+        x: 80 + Math.random() * 30,  // 80% to 110% from left (far right)
+        y: 75 + Math.random() * 15,  // 75% to 90% from top
         rotation: -15 + Math.random() * 30,
       }]);
     }
@@ -538,7 +544,7 @@ export function GlitchDialog() {
   const handleFeed = useCallback(() => {
     // Increase care offset to reduce effective corruption
     setCareOffset(prev => prev + 2);
-    setCareMessage("YUMMERS! :3");
+    setCareMessage(<>YUMMERS! <span className="font-mono">:3</span></>);
     // Speak with happy high pitch
     speak("YUMMERS", { pitch: 1.3, shorten: false });
     // Trigger wobble animation
@@ -579,7 +585,7 @@ export function GlitchDialog() {
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
-    setIsDragOver(false);
+    setDragOverAction(null);
     const action = e.dataTransfer.getData('careAction');
 
     if (action === 'feed') handleFeed();
@@ -589,11 +595,15 @@ export function GlitchDialog() {
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
-    setIsDragOver(true);
+    // Check custom types to identify the action during dragover
+    const types = e.dataTransfer.types;
+    if (types.includes('care-feed')) setDragOverAction('feed');
+    else if (types.includes('care-pet')) setDragOverAction('pet');
+    else if (types.includes('care-clean')) setDragOverAction('clean');
   }, []);
 
   const handleDragLeave = useCallback(() => {
-    setIsDragOver(false);
+    setDragOverAction(null);
   }, []);
 
   // Memoize float animation style (avoid object recreation on every render)
@@ -602,24 +612,39 @@ export function GlitchDialog() {
     '--float-duration': '8s'
   } as React.CSSProperties), []);
 
-  // Memoize drop-shadow filter style (changes based on isExiting and corruption level)
+  // Memoize drop-shadow filter style (changes based on isExiting, corruption, and drag state)
   // Includes GPU acceleration hints for Safari animated webp performance
-  // Glow color matches corruption meter: purple → pink → red
+  // Glow color matches: drag action color > corruption meter color
   const eyeFilterStyle = useMemo(() => {
-    const glowSize = isExiting ? '20px' : '8px';
+    const glowSize = dragOverAction ? '15px' : isExiting ? '20px' : '8px';
     const glowOpacity = isExiting ? '1' : '0.95';
 
-    // Color progression matching corruption meter
+    // If dragging a care action, use that action's color
     let glowColor: string;
-    switch (effectiveCorruption) {
-      case 'maximum':
-        glowColor = `rgba(239, 68, 68, ${glowOpacity})`; // red-500
-        break;
-      case 'heavy':
-        glowColor = `rgba(236, 72, 153, ${glowOpacity})`; // pink-500
-        break;
-      default:
-        glowColor = `rgba(168, 85, 247, ${glowOpacity})`; // purple-500
+    if (dragOverAction) {
+      switch (dragOverAction) {
+        case 'feed':
+          glowColor = `rgba(251, 191, 36, ${glowOpacity})`; // amber-400
+          break;
+        case 'pet':
+          glowColor = `rgba(244, 114, 182, ${glowOpacity})`; // pink-400
+          break;
+        case 'clean':
+          glowColor = `rgba(74, 222, 128, ${glowOpacity})`; // green-400
+          break;
+      }
+    } else {
+      // Color progression matching corruption meter
+      switch (effectiveCorruption) {
+        case 'maximum':
+          glowColor = `rgba(239, 68, 68, ${glowOpacity})`; // red-500
+          break;
+        case 'heavy':
+          glowColor = `rgba(236, 72, 153, ${glowOpacity})`; // pink-500
+          break;
+        default:
+          glowColor = `rgba(168, 85, 247, ${glowOpacity})`; // purple-500
+      }
     }
 
     return {
@@ -628,7 +653,7 @@ export function GlitchDialog() {
       transform: 'translateZ(0)',
       willChange: 'transform, filter'
     };
-  }, [isExiting, effectiveCorruption]);
+  }, [isExiting, effectiveCorruption, dragOverAction]);
 
   // Combine animation classes - click animation takes priority over hover
   const activeAnimationClass = animationClass || hoverAnimationClass;
@@ -663,15 +688,23 @@ export function GlitchDialog() {
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
         headerOffset
-        className="h-screen flex flex-col items-center justify-center relative"
+        className="h-screen flex flex-col items-center justify-start pt-60 md:justify-center md:pt-0 relative"
       >
         {/* Corruption Meter */}
         <CorruptionMeter level={effectiveCorruption} />
 
+        {/* Care Toolbar */}
+        <CareToolbar
+          onFeed={handleFeed}
+          onPet={handlePet}
+          onClean={handleClean}
+          onDragStart={setDragOverAction}
+          onDragEnd={() => setDragOverAction(null)}
+        />
+
         {/* Large Floating Eye - Drop Target */}
         <div
-          className={`relative w-full max-w-2xl mx-auto animate-float flex justify-center items-center h-[350px]
-                      transition-all duration-200 ${isDragOver ? 'ring-4 ring-purple-500/50 rounded-full' : ''}`}
+          className="relative w-full max-w-2xl mx-auto animate-float flex justify-center items-center h-[350px] transition-all duration-200"
           style={floatStyle}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
@@ -693,14 +726,14 @@ export function GlitchDialog() {
           {poops.map(poop => (
             <div
               key={poop.id}
-              className="absolute text-3xl transition-all duration-300"
+              className="absolute transition-all duration-300"
               style={{
                 left: `${poop.x}%`,
                 top: `${poop.y}%`,
                 transform: `rotate(${poop.rotation}deg)`,
               }}
             >
-              <Icon icon="la:poop" className="text-amber-700 drop-shadow-lg" />
+              <Icon icon="la:poop" className="w-12 h-12 text-amber-700 drop-shadow-lg" />
             </div>
           ))}
         </div>
@@ -850,9 +883,7 @@ export function GlitchDialog() {
 
         </div>
 
-        {/* Care Toolbar */}
-        <CareToolbar onClean={handleClean} />
-      </Section>
+              </Section>
     </div>
   );
 }

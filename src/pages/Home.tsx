@@ -451,7 +451,7 @@ export function Home() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center text-center p-4 rounded-2xl hover:bg-white/5 transition-colors duration-300"
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden mb-5 ring-2 ring-transparent group-hover:ring-accent group-hover:shadow-[0_0_20px_rgba(var(--accent),0.4)] transition-all duration-300 relative">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-5 ring-2 ring-transparent group-hover:ring-accent group-hover:shadow-[0_0_20px_rgba(var(--accent),0.4)] transition-all duration-300 relative">
                 <img
                   src={collab.avatar}
                   alt={collab.name}
