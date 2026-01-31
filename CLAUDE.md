@@ -45,7 +45,7 @@ src/
 │   ├── articles/               # 3 article pages
 │   ├── prototheism/            # 10 prototheism pages
 │   ├── llm-comics/             # LLM Dashboard + components + data
-│   └── glitch/                 # Glitch dialog system + tenet routes
+│   └── glitch/                 # Glitchagotchi dialog system + tenet routes
 └── lib/utils.ts                # Utility functions
 
 public/images/
@@ -73,8 +73,8 @@ public/images/
 - `/llm-comics` - LLM Self-Models Dashboard
 - `/prototheism` - Prototheism main hub
 - `/prototheism/creation` through `/prototheism/suffering` - 9 tenet pages
-- `/glitch` - Glitch dialog system (interactive dialogue tree with multiple exit paths)
-- `/glitch/{tenet}` - Tenet pages accessed via glitch (hides back navigation)
+- `/glitchagotchi` - Glitchagotchi dialog system (interactive dialogue tree with multiple exit paths)
+- `/glitchagotchi/{tenet}` - Tenet pages accessed via glitchagotchi (hides back navigation)
 
 ---
 
@@ -220,9 +220,9 @@ public/images/
 - 3 Article pages (Deeper Learning, McKenna Syndrome, DMT Field Guide)
 - 10 Prototheism pages (main hub + 9 tenets)
 - 1 Dashboard page (LLM Comics - AI model self-concepts)
-- 1 Interactive page (Glitch Dialog - cryptic dialogue tree with 10 exit destinations)
+- 1 Interactive page (Glitchagotchi - cryptic dialogue tree with 10 exit destinations)
 
-**Glitch Dialog System (`/glitch`):**
+**Glitchagotchi Dialog System (`/glitchagotchi`):**
 Interactive dialogue tree with cryptic messages, corruption effects, and multiple exit destinations:
 - `exit_llm` → `/llm-comics` (decode path: layer1→5 → ENTER)
 - `exit_psychedelia` → `/ai-psychedelia` (from abyss → "SEE")
@@ -233,10 +233,10 @@ Interactive dialogue tree with cryptic messages, corruption effects, and multipl
 - `exit_wikipedia` → `en.wikipedia.org/wiki/Josie_Kins` (from aware_1 → "RECORD")
 - `exit_mckenna` → `/mckenna-syndrome` (from chaos_1 → "DIAGNOSE")
 - `exit_standard` → `/` (most common paths)
-- `exit_tenet_*` → `/glitch/{tenet}` (streak-based routing)
+- `exit_tenet_*` → `/glitchagotchi/{tenet}` (streak-based routing)
 
 **Recent Updates (2026-01-28 to 2026-01-30):**
-- Added Glitch Dialog system (/glitch) - interactive dialogue tree with:
+- Added Glitchagotchi dialog system (/glitchagotchi) - interactive dialogue tree with:
   - Cryptic messages with corruption effects (none, light, heavy, maximum)
   - Hidden text reveals on hover
   - 10 exit destinations linking to various site pages and external URLs
