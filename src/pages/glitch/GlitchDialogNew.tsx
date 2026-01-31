@@ -4,7 +4,7 @@ import { Section } from '@/components/Section';
 import { DialogueNode, ResponseType, GlitchState, CorruptionLevel, ANIMATIONS, BUTTON_STYLES } from './types';
 import { DIALOGUE_TREE, EXIT_DESTINATIONS } from './dialogueTree';
 import { Typewriter } from './Typewriter';
-import { useAnimalese } from './useAnimalese';
+import { useAnimalese, unlockAudio } from './useAnimalese';
 import { corruptText } from './textCorruptor';
 
 // Grid pattern style - shared constant to avoid recreation
@@ -233,9 +233,12 @@ export function GlitchDialog() {
   }, [currentNode.corruption]);
 
   // Handle response selection
-  const handleResponse = useCallback((type: ResponseType, nextId: string) => {
+  const handleResponse = useCallback(async (type: ResponseType, nextId: string) => {
     console.log('[GLITCH] handleResponse called:', { type, nextId, isAnimating, isExiting });
     if (isAnimating || isExiting) return;
+
+    // Unlock audio on iOS Safari (safe to call multiple times)
+    await unlockAudio();
 
     // Start animation
     setIsAnimating(true);
