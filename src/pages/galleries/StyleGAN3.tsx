@@ -13,7 +13,7 @@ export function StyleGAN3() {
         <Link to="/ai-psychedelia" className="text-accent/60 hover:text-accent mb-8 inline-block transition-colors tracking-wide">
           &larr; Back to AI Psychedelia
         </Link>
-        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] uppercase drop-shadow-md">
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-8 tracking-[0.2em] drop-shadow-md">
           StyleGAN3
         </h1>
         <div className="max-w-3xl mx-auto space-y-6 text-white/90 text-lg font-light leading-relaxed mb-12">

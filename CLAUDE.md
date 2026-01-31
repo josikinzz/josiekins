@@ -4,11 +4,13 @@
 Rebuild Josie Kins' personal portfolio squarespace website from the old Squarespace export into a modern React + TypeScript + Tailwind + ShadCN stack.
 
 ## Tech Stack
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **Tailwind CSS** for styling
-- **ShadCN/UI** for component library
-- **React Router** for navigation
+- **React 18.3.1** with TypeScript 5.6
+- **Vite 6.0.5** for build tooling
+- **Tailwind CSS 3.4.19** for styling
+- **ShadCN/UI** for component library (Radix primitives)
+- **React Router DOM 7.13.0** for navigation
+- **@iconify/react 6.0.2** for tabler icons (header/footer navigation)
+- **Lucide React** for additional icons
 
 ## Design Principles
 - Match the old Squarespace site's look and feel exactly
@@ -18,6 +20,58 @@ Rebuild Josie Kins' personal portfolio squarespace website from the old Squaresp
 
 ## Source Reference
 The `old site/` folder contains the exported Squarespace site with HTML files and `_files` folders containing images/assets.
+
+## Project Structure
+```
+src/
+├── main.tsx                    # React entry point
+├── App.tsx                     # Root app component
+├── router.tsx                  # Route definitions (25 routes)
+├── index.css                   # Global styles & Tailwind
+├── components/
+│   ├── layout/
+│   │   ├── Header.tsx          # Icon-based nav header
+│   │   ├── Footer.tsx          # Icon-based footer
+│   │   └── Layout.tsx          # Master layout wrapper
+│   ├── ui/                     # ShadCN components
+│   ├── Section.tsx             # Reusable page section
+│   ├── ImageGallery.tsx        # Lightbox gallery
+│   ├── ProjectCard.tsx         # Portfolio project card
+│   └── GalleryGrid.tsx         # Gallery thumbnail grid
+├── pages/
+│   ├── Home.tsx                # Home page with hero
+│   ├── Misc.tsx                # Miscellaneous links
+│   ├── galleries/              # 8 gallery pages
+│   ├── articles/               # 3 article pages
+│   ├── prototheism/            # 10 prototheism pages
+│   └── llm-comics/             # LLM Dashboard + components + data
+└── lib/utils.ts                # Utility functions
+
+public/images/
+├── shared/                     # Logos, avatars, backgrounds
+├── galleries/                  # Gallery images by collection
+├── articles/                   # Article images
+├── prototheism/                # Tenet hero images & banners
+└── llm-comics/                 # 62 AI model images (5 models)
+```
+
+## Routes
+- `/` - Home
+- `/misc` - Miscellaneous
+- `/ai-psychedelia` - AI Psychedelia hub
+- `/ai-psychedelia/magnific` - Magnific gallery
+- `/ai-psychedelia/mjv4` - MJ-V4 Initial gallery
+- `/ai-psychedelia/mjv4-improved` - MJ-V4 Improved gallery
+- `/ai-psychedelia/mjv5` - MJ-V5 gallery
+- `/ai-psychedelia/mjv52` - MJ-V5.2 gallery
+- `/ai-psychedelia/stylegan2` - StyleGAN2 page
+- `/ai-psychedelia/stylegan3` - StyleGAN3 gallery
+- `/deeper-learning` - Deeper Learning book
+- `/dmt-field-guide` - DMT Field Guide book
+- `/mckenna-syndrome` - McKenna Syndrome article
+- `/llm-comics` - LLM Self-Models Dashboard
+- `/prototheism` - Prototheism main hub
+- `/prototheism/creation` through `/prototheism/suffering` - 9 tenet pages
 
 ---
 
@@ -59,8 +113,9 @@ The `old site/` folder contains the exported Squarespace site with HTML files an
 - [x] Home page
 - [x] Misc page (with links to sub-pages)
 - [x] Gallery pages (AI Psychedelia, Magnific, MJ-V4, MJ-V5, StyleGAN3, etc.)
-- [x] Article pages (Deeper Learning, McKenna Syndrome)
+- [x] Article pages (Deeper Learning, McKenna Syndrome, DMT Field Guide)
 - [x] Prototheism section (main + 9 sub-pages)
+- [x] LLM Comics Dashboard (5 AI models with bios, traits, comic images, metrics)
 
 ### Phase 4: Polish & Verification
 - [x] All pages render without errors
@@ -140,59 +195,54 @@ The `old site/` folder contains the exported Squarespace site with HTML files an
 
 ## Current Status
 
-**Last Updated**: 2026-01-26
+**Last Updated**: 2026-01-30
 
-**Current Phase**: Phase 6 - COMPLETE
+**Current Phase**: Phase 7 - New Features & Enhancements
 
-**Notes**: Third audit pass confirmed all content is at parity. Only remaining difference is optional pagination links on StyleGAN3 (UX enhancement, not content).
+**Notes**: Squarespace rebuild is complete. Now adding new content and features beyond the original site.
 
 **Key Features Implemented:**
 - Dark psychedelic background images on all sections with 70% overlay
 - Gradient fades at top (80% black) and bottom (80-100% black) of sections
 - Footer with background image and 85% overlay
-- Transparent header with white text throughout
-- Full-width avatar on home page hero
+- Icon-based navigation (tabler icons: home, spiral, github) in header and footer
+- Full-width avatar on home page hero with animated floating eyecon overlay
 - Prototheism banner linking to /prototheism
 - Accent purple color (#a855f7) for titles and links
 
-**Pages (23 total):**
-- Home page (hero, MY WORK, PROJECTS, COLLABORATORS + Prototheism banner)
-- Misc page (3 circular card links)
+**Pages (25 total):**
+- Home page (hero with animated eyecon, MY WORK, PROJECTS, COLLABORATORS + Prototheism banner)
+- Misc page (4 card links)
 - 8 Gallery pages (AI Psychedelia hub, Magnific, MJ-V4 Initial/Improved, MJ-V5, MJ-V5.2, StyleGAN2, StyleGAN3)
-- 2 Article pages (Deeper Learning, McKenna Syndrome)
+- 3 Article pages (Deeper Learning, McKenna Syndrome, DMT Field Guide)
 - 10 Prototheism pages (main hub + 9 tenets)
+- 1 Dashboard page (LLM Comics - AI model self-concepts)
 
-**Recent Fixes:**
-- Updated all page titles site-wide to use accent purple (`text-accent`) for consistency
-- Refactored AI Psychedelia hub to show clickable thumbnail grid linking to 7 sub-galleries (matching old site portfolio grid)
-- Added StyleGAN2 page with text and YouTube embed
-- Routes now nested under /ai-psychedelia/ (e.g., /ai-psychedelia/magnific)
-- Added "Back to AI Psychedelia" navigation link to all sub-gallery pages
-- Created GalleryGrid component for portfolio-style thumbnail links
-- Fixed background images not loading (use `+` not `%2B` in CSS background-image URLs)
-- Fixed YouTube channel logo (uses slice1.png)
-- Added Prototheism banner (Josie_Icons3.png)
-- Removed Sernyl from collaborators
-- Title "Josie Kins INFO" uses accent purple
+**Recent Updates (2026-01-28 to 2026-01-30):**
+- Added LLM Comics Dashboard (/llm-comics) - comprehensive page with 5 AI models:
+  - ChatGPT 4o, DeepSeek R1, Gemini 2.5 Pro, Claude 3.7, Grok 3
+  - Model bios, personality traits, comic image galleries, metrics tables
+  - ~4227 lines of components and data
+  - 62 image assets
+- Added DMT Field Guide page (/dmt-field-guide) with 8 book page images
+- Refactored header/footer to use icon-based navigation (tabler icons via @iconify/react)
+- Added animated floating eyecon overlay to home hero section
+- Fixed Safari positioning bug for floating animation (uses calc() offsets)
+- Removed unused CSS variables for cleaner build
 
 **Prototheism Content Updates (2026-01-26):**
 - Added large hero images to all 9 tenet pages (Creation, Death, Faith, God, Identity, Morality, Purpose, Reverence, Suffering)
 - Removed circular cropping from main Prototheism page (logo and tenet images now natural shape)
 - Added Etymology and Source sections to main Prototheism page
 - Added McKenna Syndrome banner (josie+and+emily+it+came+to+me+in+a+trip.png) to all 10 Prototheism pages
-- Updated all tenet page content to match old site exactly:
-  - Faith: Fixed "In the Absence of Faith" section
-  - Creation: Full "Interdependent Opposites" and "Unanswerable Questions" sections
-  - Death: All 5 sections with External Sources (Wikipedia links)
-  - Identity: All 5 levels + Understanding the Illusion + Multiple Identities
-  - Morality: Full content with examples lists and Freedom vs Subjugation
-  - Suffering: All 9 sections (Acceptance of Time, Finding Purpose, Building Community, etc.)
-  - Purpose: Full "Forking Prototheism" GitHub instructions
-  - Reverence: Complete "Stages of Complexity" timeline with statistics + Technological Singularity section
+- Updated all tenet page content to match old site exactly
 
-Build verified working: 71 modules, 402KB JS (120KB gzip)
+Build verified working: 1766 modules, 660KB JS (190KB gzip), 49KB CSS
 
 **Blockers**: None
+
+**Known Issues:**
+- Bundle size warning: JS chunk is 660KB (exceeds 500KB recommendation) - consider code splitting
 
 ---
 
@@ -224,16 +274,37 @@ Project is complete when:
 
 ___
 
-FUTURE TASKS
-FUTURE TASKS
-- Add our clinical trial to the resume.
-- Add password protection for prototheism
-- Add Video reps to the AI psychedelia section.
-- Add interactive calculated timeline to the reverence section of the site with all the % timeline stuff.
-- Make it clearer in the resume i dont support psychonautwiki.
-- Add the clinical trial to 
-- add ai comic tracker stuff, refactor that.
-- add dnd pdf
-- add t3.consensus
-- make it so the external links icon doesnt get smaller in the emdia references cards depending on how much text there is
-- make it so the title isnt its own section on the mckenna syndrome page
+## Future Tasks
+- [ ] Add clinical trial to the resume
+- [ ] Add password protection for prototheism
+- [ ] Add video reps to the AI psychedelia section
+- [ ] Add interactive calculated timeline to the reverence section (% timeline visualization)
+- [ ] Make it clearer in the resume that Josie doesn't support PsychonautWiki
+- [x] Add LLM Comics Dashboard (DONE - /llm-comics with 5 AI models)
+- [ ] Add D&D PDF page (psychoactive-substances-of-faerun.pdf exists in public/)
+- [ ] Add t3.consensus
+- [ ] Fix external links icon sizing in media reference cards
+- [ ] Move McKenna Syndrome title out of its own section
+- [ ] Code splitting to reduce bundle size (currently 660KB, recommend <500KB)
+
+---
+
+## D&D Homebrew Rebuild Strategy
+
+**Goal:** Complete the last few pages of "The Psychoactive Substances of Faerûn" without rebuilding the entire 40-page PDF.
+
+**Current State:**
+- Final PDF exists at `public/psychoactive-substances-of-faerun.pdf` (40 pages, 9.6 MB)
+- Source files: `HB-ThePsychoactiveSubstancesofFaerun-AnEncyclopedicGuide.txt`
+- Chapter 7 additions: `homebrewery-additions.txt` / `psychoactive-substances-faerun-additions.md`
+
+**Strategy:**
+1. Write Homebrewery markup for only the new/updated last pages
+2. Render those pages on homebrewery.naturalcrit.com
+3. Export as PDF (just the new pages)
+4. Use PDF tools to join new pages onto the existing PDF
+
+**Why this approach:**
+- Avoids image reassembly issues from full rebuild
+- Preserves existing 40 pages with correct formatting
+- Only need to focus on new content

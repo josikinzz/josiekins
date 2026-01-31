@@ -36,7 +36,7 @@ tsconfig.node.tsbuildinfo
 .venv/
 
 # Original source files (not part of build)
-llm-comics/
+/llm-comics/
 
 # Working files for other projects
 pdf-images/

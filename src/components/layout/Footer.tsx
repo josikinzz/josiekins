@@ -21,17 +21,17 @@ export function Footer() {
         }}
       />
       <div className="relative z-10 max-w-page mx-auto px-page text-white/60 text-sm text-center flex justify-center gap-8">
-        <Link to="/" className="text-accent hover:text-white transition-colors">
+        <Link to="/" className="text-accent hover:scale-110 active:scale-95 hover:text-white transition-transform duration-200">
           <Icon icon="tabler:home" width={32} />
         </Link>
-        <Link to="/misc" className="text-accent hover:text-white transition-colors">
+        <Link to="/misc" className="text-accent hover:animate-[spin_3s_linear_infinite] hover:text-white">
           <Icon icon="tabler:spiral" width={32} />
         </Link>
         <a
           href="https://github.com/josikinzz"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-accent hover:text-white transition-colors"
+          className="text-accent hover:-translate-y-1 hover:text-white transition-[transform,color] duration-300"
         >
           <Icon icon="tabler:brand-github" width={32} />
         </a>

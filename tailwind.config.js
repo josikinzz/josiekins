@@ -9,8 +9,8 @@ export default {
   	extend: {
   		fontFamily: {
   			body: ['Inter', 'system-ui', 'sans-serif'],
-  			heading: ['Nunito', 'system-ui', 'sans-serif'],
-  			display: ['Outfit', 'system-ui', 'sans-serif'],
+  			heading: ['Orbiga', 'Nunito', 'system-ui', 'sans-serif'],
+  			display: ['Orbiga', 'Outfit', 'system-ui', 'sans-serif'],
   		},
   		maxWidth: {
   			'page': '1400px',

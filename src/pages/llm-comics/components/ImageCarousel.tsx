@@ -21,14 +21,25 @@ export function ImageCarousel({ images, accentColor, onImageClick }: ImageCarous
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (el) {
-      el.addEventListener('scroll', updateArrows);
-      // Initial check
-      setTimeout(updateArrows, 50);
-    }
-    return () => {
-      if (el) el.removeEventListener('scroll', updateArrows);
+    if (!el) return;
+
+    // RAF-throttled scroll handler for better performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateArrows();
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial check
+    setTimeout(updateArrows, 50);
+
+    return () => el.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scroll = (direction: 'prev' | 'next') => {
@@ -63,16 +74,8 @@ export function ImageCarousel({ images, accentColor, onImageClick }: ImageCarous
           <div
             key={idx}
             onClick={() => onImageClick(idx)}
-            className="inline-block mr-3 cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg"
-            style={{ 
-              borderColor: 'transparent'
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = accentColor;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.borderColor = 'transparent';
-            }}
+            className="inline-block mr-3 cursor-pointer rounded-lg overflow-hidden border-2 border-transparent transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 shadow-md hover:shadow-lg hover:border-[var(--carousel-accent)]"
+            style={{ '--carousel-accent': accentColor } as React.CSSProperties}
           >
             <img
               src={img}

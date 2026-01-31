@@ -26,20 +26,27 @@ export function Header({ transparent = false }: HeaderProps) {
           <img
             src="/images/shared/JosieLogo2.webp"
             alt="JosieKins"
-            className="h-[30px] md:h-[50px]"
+            className="h-[30px] md:h-[50px] hover:brightness-110 hover:scale-105 transition-[transform,filter] duration-300"
           />
         </Link>
 
         {/* Navigation */}
-        <div className="flex items-center gap-6 md:gap-8">
-          {navLinks.map((link) =>
-            link.external ? (
+        <div className="flex items-center gap-3 md:gap-8">
+          {navLinks.map((link) => {
+            const getHoverClass = (icon: string) => {
+              if (icon === 'tabler:home') return 'hover:scale-110 active:scale-95 hover:text-white transition-transform duration-200'
+              if (icon === 'tabler:spiral') return 'hover:animate-[spin_3s_linear_infinite] hover:text-white'
+              if (icon === 'tabler:brand-github') return 'hover:-translate-y-1 hover:text-white transition-[transform,color] duration-300 hover:text-accent'
+              return 'hover:text-white transition-colors'
+            }
+
+            return link.external ? (
               <a
                 key={link.href}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-accent hover:text-white transition-colors"
+                className={cn("text-accent", getHoverClass(link.icon))}
               >
                 <Icon icon={link.icon} width={32} />
               </a>
@@ -47,12 +54,12 @@ export function Header({ transparent = false }: HeaderProps) {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-accent hover:text-white transition-colors"
+                className={cn("text-accent", getHoverClass(link.icon))}
               >
                 <Icon icon={link.icon} width={32} />
               </Link>
             )
-          )}
+          })}
         </div>
       </nav>
     </header>

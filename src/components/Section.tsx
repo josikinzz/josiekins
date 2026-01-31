@@ -10,13 +10,16 @@ interface SectionProps {
   fullWidth?: boolean
   verticalPadding?: 'none' | 'small' | 'medium' | 'large'
   bottomFadeOpacity?: number
+  bottomFadeHeight?: string
+  topFadeOpacity?: number
+  topFadeHeight?: string
 }
 
 const paddingMap = {
   none: '',
-  small: 'py-8 md:py-12',
-  medium: 'py-12 md:py-20',
-  large: 'py-20 md:py-32',
+  small: 'py-4 md:py-8',
+  medium: 'py-8 md:py-12',
+  large: 'py-12 md:py-20',
 }
 
 const backgroundMap = {
@@ -35,7 +38,10 @@ export function Section({
   backgroundOverlay = true,
   fullWidth = false,
   verticalPadding = 'medium',
-  bottomFadeOpacity = 0.8,
+  bottomFadeOpacity = 1,
+  bottomFadeHeight = '40%',
+  topFadeOpacity = 1,
+  topFadeHeight = '40%',
 }: SectionProps) {
   const isImageBackground = background === 'image' && backgroundImage
 
@@ -51,11 +57,11 @@ export function Section({
       style={
         isImageBackground
           ? {
-              backgroundImage: `url(${backgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundColor: '#111',
-            }
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundColor: '#111',
+          }
           : undefined
       }
     >
@@ -65,13 +71,19 @@ export function Section({
           <div className="absolute inset-0 bg-black/70" />
           {/* Top fade to black */}
           <div
-            className="absolute inset-x-0 top-0 h-[20%]"
-            style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%)' }}
+            className="absolute inset-x-0 top-0"
+            style={{
+              height: topFadeHeight,
+              background: `linear-gradient(to bottom, rgba(0,0,0,${topFadeOpacity}) 0%, transparent 100%)`
+            }}
           />
           {/* Bottom fade to black */}
           <div
-            className="absolute inset-x-0 bottom-0 h-[20%]"
-            style={{ background: `linear-gradient(to top, rgba(0,0,0,${bottomFadeOpacity}) 0%, transparent 100%)` }}
+            className="absolute inset-x-0 bottom-0"
+            style={{
+              height: bottomFadeHeight,
+              background: `linear-gradient(to top, rgba(0,0,0,${bottomFadeOpacity}) 0%, transparent 100%)`
+            }}
           />
         </>
       )}

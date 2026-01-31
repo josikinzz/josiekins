@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom Fonts */
+@font-face {
+  font-family: 'Orbiga';
+  src: url('/fonts/Orbiga.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -100,6 +109,9 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
+  h3 {
+    @apply text-3xl;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -119,4 +131,19 @@
   will-change: transform;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PERFORMANCE UTILITY CLASSES
+   Use sparingly - too many can increase memory usage
+   ═══════════════════════════════════════════════════════════ */
+
+/* GPU layer hint for frequently-animated elements */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Layout containment to limit browser recalculations */
+.contain-layout {
+  contain: layout;
 }

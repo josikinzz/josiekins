@@ -33,7 +33,7 @@ export function ProjectCard({
         <img
           src={imageSrc}
           alt={imageAlt || title}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-150"
+          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-150 group-hover:rotate-1 will-change-transform"
         />
 
         {/* Title overlay on hover */}

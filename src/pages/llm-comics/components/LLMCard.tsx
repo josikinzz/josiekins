@@ -37,7 +37,7 @@ export function LLMCard({ model, onImageClick, onShowScripts }: LLMCardProps) {
 
   return (
     <div
-      className="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 bg-black/20 backdrop-blur-sm border border-white/10 shadow-lg group hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(var(--accent),0.3)]"
+      className="rounded-2xl overflow-hidden transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 bg-black/20 backdrop-blur-sm border border-white/10 shadow-lg group hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(var(--accent),0.3)]"
     >
       {/* Header bar - now using model accent color again per user request */}
       <div

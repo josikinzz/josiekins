@@ -80,64 +80,64 @@ const projects = [
 
 const mediaReferences = [
   {
-    name: 'The Illustrated Field Guide to DMT Entities by David Jay Brown & Sara Phinn Huntley',
+    name: 'The Illustrated Field Guide to DMT Entities (Book Interview)',
     href: '/dmt-field-guide',
     external: false,
-    type: 'book',
+    type: 'interview',
   },
   {
-    name: 'Josie Kins (Wikipedia)',
+    name: 'Josie Kins (Wikipedia Article)',
     href: 'https://en.wikipedia.org/wiki/Josie_Kins',
     external: true,
     type: 'wikipedia',
   },
   {
-    name: 'DMT Entities: Dysconnective Failure to Recognise Self by Einar Moback',
+    name: 'DMT Entities: Dysconnective Failure to Recognise Self (Substack Essay)',
     href: 'https://substack.com/@moback/p-183718404',
     external: true,
     type: 'essay',
   },
   {
-    name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025)',
+    name: 'AI Models Driving the Next Generation of Psychedelics (SXSW 2025 Talk)',
     href: 'https://schedule.sxsw.com/2025/contributors/2204921',
     external: true,
     type: 'talk',
   },
   {
-    name: 'Deeper Learning with Psychedelics by David J. Blacker',
+    name: 'Deeper Learning with Psychedelics (Book Feature)',
     href: '/deeper-learning',
     external: false,
     type: 'book',
   },
   {
-    name: 'What Hallucinogens Will Make You See (Nautilus)',
+    name: 'What Hallucinogens Will Make You See (Nautilus Interview)',
     href: 'https://nautil.us/what-hallucinogens-will-make-you-see-308247/',
     external: true,
-    type: 'magazine',
+    type: 'interview',
   },
   {
-    name: 'Double Blind Magazine article/interview',
+    name: 'AI Can Now Generate DMT Visuals, Thanks To This Online Community (Double Blind Interview)',
     href: 'https://doubleblindmag.com/ai-can-now-generate-dmt-visuals/',
     external: true,
+    type: 'interview',
+  },
+  {
+    name: "Video Shows 'Most Accurate' Representation of What Psychedelic Visuals Look Like (UNILAD Article)",
+    href: 'https://www.unilad.com/news/most-accurate-representation-psychedelic-visuals-20221123',
+    external: true,
     type: 'magazine',
   },
   {
-    name: "Video shows 'most accurate' representation of what psychedelic visuals look like (UNILAD)",
-    href: 'https://www.unilad.com/news/most-accurate-representation-psychedelic-visuals-20221123',
-    external: true,
-    type: 'video',
-  },
-  {
-    name: 'AI Fed Psychedelic Images Generates DMT Visuals (Wholecelium)',
+    name: 'AI Fed Psychedelic Images Generates DMT Visuals (Wholecelium Article)',
     href: 'https://www.wholecelium.com/blog/ai-fed-psychedelic-images-generates-dmt-visuals/',
     external: true,
-    type: 'blog',
+    type: 'magazine',
   },
   {
-    name: 'How does one see the world under the influence of hallucinogens? A scientist created accurate video (Denik.cz)',
+    name: 'How Does One See the World Under the Influence of Hallucinogens? (Denik.cz Article)',
     href: 'https://www.denik.cz/veda/halucinogeny-drogy-uzivani-video.html?utm_source=www.seznam.cz&utm_medium=sekce-z-internetu#dop_ab_variant=0&dop_source_zone_name=hpfeed.sznhp.box',
     external: true,
-    type: 'video',
+    type: 'magazine',
   },
 ]
 
@@ -159,15 +159,20 @@ export function Home() {
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
         bottomFadeOpacity={1}
+        bottomFadeHeight="40%"
       >
         <div className="max-w-4xl mx-auto text-white text-center">
           {/* Josie image with animated eyecon overlay */}
-          <div className="relative max-w-md w-full mx-auto mb-8 overflow-visible">
+          <div className="relative max-w-md w-full mx-auto mb-4 overflow-visible">
             {/* Base image */}
             <img
               src="/images/shared/Josie_+(2).webp"
               alt="Josie Kins"
-              className="w-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:scale-[1.02] transition-transform duration-700 ease-in-out"
+              className="w-full object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:scale-[1.02] transition-transform duration-700 ease-in-out animate-float"
+              style={{
+                '--float-distance': '12px',
+                '--float-duration': '7s',
+              } as React.CSSProperties}
             />
             {/* ═══════════════════════════════════════════════════════════
                 EYECON OVERLAY CONTROLS - Edit these values to adjust:
@@ -193,14 +198,11 @@ export function Home() {
               } as React.CSSProperties}
             />
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 text-accent tracking-tight drop-shadow-sm pb-2">
-            JOSIE KINS INFO
-          </h1>
-          <div className="max-w-2xl mx-auto space-y-4">
-            <p className="text-lg text-white/90 leading-relaxed">
+          <div className="max-w-2xl mx-auto space-y-4 relative py-8 px-4 rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_70%)]">
+            <p className="text-xl text-white/90 leading-relaxed italic drop-shadow-md">
               Psychedelic researcher with leading expertise in the formal documentation and classification of altered states of consciousness.
             </p>
-            <p className="text-lg text-white/90 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed italic drop-shadow-md">
               A prominent researcher, writer, community leader, YouTuber, and content creator within the online psychedelic subculture.
             </p>
           </div>
@@ -213,10 +215,12 @@ export function Home() {
         background="image"
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
+        topFadeHeight="50%"
+        topFadeOpacity={1}
       >
-        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] drop-shadow-md">
           Resume
-        </h2>
+        </h1>
 
         <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
           {projects.map((project) => (
@@ -225,30 +229,29 @@ export function Home() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex gap-6 p-8 bg-black/20 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-black/40 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(var(--accent),0.3)] transition-all duration-300 relative overflow-hidden"
+              className="group block p-6 md:p-8 bg-black/20 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-black/40 hover:border-accent/30 hover:shadow-[0_0_30px_-10px_rgba(var(--accent),0.3)] transition-[background-color,border-color,box-shadow] duration-300 relative overflow-hidden"
             >
               <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-accent">
                 <ExternalLink size={20} />
               </div>
-              <div className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 w-20 h-20 ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
-                <img
-                  src={project.logo}
-                  alt={project.name}
-                  className={`transition-transform duration-500 group-hover:scale-110 ${project.name === 'The Josie Kins Youtube Channel' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2 mb-1 pr-6">
-                  <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white group-hover:underline">
-                    {project.name}
-                  </h3>
-                  {project.roles?.length === 1 && (
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
-                      {project.roles[0]}
-                    </span>
-                  )}
+
+              {/* Mobile: Logo + Title row */}
+              <div className="flex items-center gap-4 mb-4 md:hidden">
+                <div className={`flex-shrink-0 flex items-center justify-center transition-all duration-300 w-16 h-16 ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
+                  <img
+                    src={project.logo}
+                    alt={project.name}
+                    className={`transition-transform duration-500 group-hover:scale-110 ${project.name === 'The Josie Kins Youtube Channel' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
+                  />
                 </div>
-                {project.roles && project.roles.length > 1 && (
+                <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white pr-6">
+                  {project.name}
+                </h3>
+              </div>
+
+              {/* Mobile: Content full width */}
+              <div className="md:hidden">
+                {project.roles && project.roles.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-2">
                     {project.roles.map((role: string) => (
                       <span key={role} className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
@@ -263,6 +266,43 @@ export function Home() {
                   <p className="text-sm text-white/40 italic mt-3">{project.warning}</p>
                 )}
               </div>
+
+              {/* Desktop: Original two-column layout */}
+              <div className="hidden md:flex md:gap-6">
+                <div className={`flex-shrink-0 flex items-start justify-center transition-all duration-300 w-20 h-20 ${project.name === 'The Josie Kins Youtube Channel' ? 'rounded-full overflow-hidden ring-1 ring-white/5 group-hover:ring-accent/50' : ''}`}>
+                  <img
+                    src={project.logo}
+                    alt={project.name}
+                    className={`transition-transform duration-500 group-hover:scale-110 ${project.name === 'The Josie Kins Youtube Channel' ? 'w-full h-full object-cover' : 'max-w-full max-h-full object-contain'}`}
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1 pr-6">
+                    <h3 className="text-2xl font-bold font-heading text-accent group-hover:text-white">
+                      {project.name}
+                    </h3>
+                    {project.roles?.length === 1 && (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
+                        {project.roles[0]}
+                      </span>
+                    )}
+                  </div>
+                  {project.roles && project.roles.length > 1 && (
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      {project.roles.map((role: string) => (
+                        <span key={role} className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-medium">
+                          {role}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <p className="text-xs uppercase tracking-wider text-white/50 mb-3 font-medium">{project.dates}</p>
+                  <p className="text-base text-white/80 leading-relaxed font-light whitespace-pre-line">{project.description}</p>
+                  {project.warning && (
+                    <p className="text-sm text-white/40 italic mt-3">{project.warning}</p>
+                  )}
+                </div>
+              </div>
             </a>
           ))}
         </div>
@@ -276,9 +316,9 @@ export function Home() {
         backgroundOverlay
       >
         <div className="max-w-5xl mx-auto text-white">
-          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+          <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] drop-shadow-md">
             Literature & Media References
-          </h2>
+          </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {mediaReferences.map((ref) => {
@@ -302,14 +342,14 @@ export function Home() {
                     href={ref.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-[background-color,border-color,box-shadow] duration-300 hover:shadow-lg hover:shadow-accent/5"
                   >
                     {children}
                   </a>
                 ) : (
                   <Link
                     to={ref.href}
-                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+                    className="group bg-black/20 backdrop-blur-sm border border-white/5 p-5 rounded-xl flex items-center gap-4 hover:bg-black/30 hover:border-accent/30 transition-[background-color,border-color,box-shadow] duration-300 hover:shadow-lg hover:shadow-accent/5"
                   >
                     {children}
                   </Link>
@@ -317,18 +357,45 @@ export function Home() {
 
               return (
                 <Wrapper key={ref.name}>
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-colors duration-300 flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-black transition-[background-color,color,transform] duration-300 flex-shrink-0 group-hover:scale-110 group-hover:rotate-12 will-change-transform">
                     {ref.type === 'book' ? (
-                      <IconifyIcon icon="tabler:book" width={20} height={20} />
+                      <IconifyIcon icon="tabler:book" width={26} height={26} />
+                    ) : ref.type === 'interview' ? (
+                      <IconifyIcon icon="tabler:quote" width={26} height={26} />
+                    ) : ref.type === 'wikipedia' ? (
+                      <IconifyIcon icon="hugeicons:wikipedia" width={26} height={26} />
+                    ) : ref.type === 'nautilus' ? (
+                      <IconifyIcon icon="lucide:shell" width={26} height={26} />
                     ) : ref.type === 'talk' ? (
-                      <IconifyIcon icon="tabler:microphone" width={20} height={20} />
+                      <IconifyIcon icon="tabler:microphone-2" width={26} height={26} />
+                    ) : ref.type === 'ai' ? (
+                      <IconifyIcon icon="mage:robot-uwu" width={26} height={26} />
                     ) : (
-                      IconComponent && <IconComponent size={20} />
+                      IconComponent && <IconComponent size={26} />
                     )}
                   </div>
-                  <span className="text-white/90 group-hover:text-accent transition-colors font-medium">
-                    {ref.name}
-                  </span>
+                  <div className="flex flex-col">
+                    {(() => {
+                      const match = ref.name.match(/^(.+?)\s*\(([^)]+)\)$/)
+                      if (match) {
+                        return (
+                          <>
+                            <span className="text-white/90 group-hover:text-accent transition-colors font-medium">
+                              {match[1]}
+                            </span>
+                            <span className="text-xs text-white/50 group-hover:text-accent/70 transition-colors mt-0.5 uppercase tracking-wider">
+                              {match[2]}
+                            </span>
+                          </>
+                        )
+                      }
+                      return (
+                        <span className="text-white/90 group-hover:text-accent transition-colors font-medium">
+                          {ref.name}
+                        </span>
+                      )
+                    })()}
+                  </div>
                   {ref.external && (
                     <ExternalLink size={14} className="ml-auto flex-shrink-0 text-white/20 group-hover:text-accent/50 transition-colors" />
                   )}
@@ -346,9 +413,9 @@ export function Home() {
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
       >
-        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+        <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] drop-shadow-md">
           Collaborators
-        </h2>
+        </h1>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto px-4">
           {collaborators.map((collab) => (
@@ -366,7 +433,7 @@ export function Home() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <h3 className="text-base font-bold font-heading text-white/90 group-hover:text-accent transition-colors">
+              <h3 className="text-xl font-bold font-heading text-accent group-hover:text-white transition-colors">
                 {collab.name}
               </h3>
             </a>
@@ -378,7 +445,11 @@ export function Home() {
           <img
             src="/images/shared/Josie_Icons3.webp"
             alt="Prototheism"
-            className="w-full object-contain filter brightness-75 hover:brightness-100 transition-all duration-700 drop-shadow-2xl hover:scale-105"
+            className="w-full object-contain filter brightness-75 hover:brightness-100 transition-[filter,transform] duration-700 drop-shadow-2xl hover:scale-105 animate-float"
+            style={{
+              '--float-distance': '10px',
+              '--float-duration': '5s',
+            } as React.CSSProperties}
           />
         </div>
       </Section>

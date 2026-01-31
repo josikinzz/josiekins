@@ -29,7 +29,7 @@ export function Prototheism() {
               alt="Prototheism Logo"
               className="max-w-md mx-auto mb-10 block shadow-2xl"
             />
-          <h1 className="text-4xl md:text-6xl font-light font-heading text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">
+          <h1 className="text-4xl md:text-6xl font-light font-heading text-accent mb-12 tracking-[0.2em] drop-shadow-md">
             Prototheism <span className="text-2xl md:text-3xl opacity-70 tracking-normal normal-case block mt-2 font-sans">(v0.1)</span>
           </h1>
 
@@ -55,7 +55,7 @@ export function Prototheism() {
         backgroundImage="/images/shared/eye+thingy+cool.webp"
         backgroundOverlay
       >
-        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+        <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] drop-shadow-md">
           Tenets
         </h2>
 
@@ -89,7 +89,7 @@ export function Prototheism() {
         backgroundOverlay
       >
         <div className="max-w-3xl mx-auto text-white">
-          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
+          <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] drop-shadow-md">
             Etymology
           </h2>
 

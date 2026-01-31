@@ -21,7 +21,7 @@ export function Identity() {
             className="max-w-md mx-auto mb-10 block shadow-2xl"
           />
 
-          <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-12 tracking-[0.2em] uppercase drop-shadow-md">
+          <h1 className="text-4xl md:text-5xl font-light font-heading text-center text-accent mb-12 tracking-[0.2em] drop-shadow-md">
             Identity
           </h1>
 
