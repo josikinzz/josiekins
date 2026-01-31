@@ -150,7 +150,15 @@ export function GlitchDialog() {
   const [exitCountdown, setExitCountdown] = useState<number | null>(null);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isEyeHovered, setIsEyeHovered] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(() => {
+    // Check if image is already cached on initial render
+    if (typeof window !== 'undefined') {
+      const img = new Image();
+      img.src = '/animated_eyecon_500_q50.webp';
+      return img.complete && img.naturalHeight !== 0;
+    }
+    return false;
+  });
   const charCountRef = useRef(0);
   const exitTimersRef = useRef<NodeJS.Timeout[]>([]);
   const hasStartedExitRef = useRef(false);
@@ -162,7 +170,13 @@ export function GlitchDialog() {
   useEffect(() => {
     const img = new Image();
     img.onload = () => setIsImageLoaded(true);
+    img.onerror = () => setIsImageLoaded(true); // Show content anyway on error
     img.src = '/animated_eyecon_500_q50.webp';
+
+    // Handle already-cached images (complete is true immediately)
+    if (img.complete) {
+      setIsImageLoaded(true);
+    }
   }, []);
 
   // Debug: Log current state (development only)
