@@ -146,6 +146,7 @@ export function Prototheism() {
         background="image"
         backgroundImage="/images/shared/geometry+circle+wall.webp"
         backgroundOverlay
+        className="!pb-0"
       >
         <div className="max-w-3xl mx-auto text-white">
           <h2 className="text-3xl md:text-4xl font-light font-heading text-center text-accent mb-16 tracking-[0.2em] uppercase drop-shadow-md">
@@ -167,7 +168,7 @@ export function Prototheism() {
           </div>
 
           {/* McKenna Syndrome Banner */}
-          <div className="max-w-lg mx-auto mt-16 -mb-20 md:-mb-32">
+          <div className="max-w-lg mx-auto mt-16">
             <Link to="/mckenna-syndrome" className="block group relative">
               <img
                 src="/images/prototheism/josie+and+emily+it+came+to+me+in+a+trip.webp"

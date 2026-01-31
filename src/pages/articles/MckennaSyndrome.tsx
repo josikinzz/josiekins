@@ -21,6 +21,7 @@ export function MckennaSyndrome() {
         background="image"
         backgroundImage="/images/shared/eye+wall+angled.webp"
         backgroundOverlay
+        className="!pb-0"
       >
         <div className="max-w-4xl mx-auto">
           <img
@@ -29,30 +30,12 @@ export function MckennaSyndrome() {
             className="w-full rounded-lg shadow-lg mb-12"
           />
 
-          <div className="max-w-md mx-auto mb-12">
-            <img
-              src="/images/articles/mckenna-syndrome/backarrow.webp"
-              alt="Back Arrow"
-              className="w-full h-auto"
-            />
-          </div>
-
-          <div className="max-w-lg mx-auto mb-12">
+          <div className="max-w-lg mx-auto mt-12">
             <img
               src="/images/articles/mckenna-syndrome/josie+and+emily+it+came+to+me+in+a+trip.webp"
               alt="It Came to Me in a Trip"
               className="w-full h-auto"
             />
-          </div>
-
-          <div className="text-center">
-            <Link to="/misc" className="inline-block hover:opacity-80 transition-opacity">
-              <img
-                src="/images/shared/Icon2.webp"
-                alt="Back to Misc"
-                className="w-16 h-16 mx-auto"
-              />
-            </Link>
           </div>
         </div>
       </Section>

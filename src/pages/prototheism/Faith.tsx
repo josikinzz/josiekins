@@ -13,6 +13,7 @@ export function Faith({ hideBackButton }: FaithProps) {
         background="image"
         backgroundImage="/images/shared/eye+thingy+cool.webp"
         backgroundOverlay
+        className="!pb-0"
       >
         <div className="max-w-3xl mx-auto text-white">
           {!hideBackButton && (
@@ -68,7 +69,7 @@ export function Faith({ hideBackButton }: FaithProps) {
           </div>
 
           {/* McKenna Syndrome Banner */}
-          <div className="max-w-lg mx-auto mt-16 -mb-20 md:-mb-32">
+          <div className="max-w-lg mx-auto mt-16">
             <Link to="/mckenna-syndrome" className="block group relative">
               <img
                 src="/images/prototheism/josie+and+emily+it+came+to+me+in+a+trip.webp"
