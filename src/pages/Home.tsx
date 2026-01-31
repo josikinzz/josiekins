@@ -189,7 +189,7 @@ export function Home() {
               }}
             >
               <Link
-                to="/glitch"
+                to="/glitchagotchi"
                 className="absolute inset-6 cursor-pointer animate-float"
                 style={{
                   '--float-distance': '8px',

@@ -461,7 +461,7 @@ export const DIALOGUE_TREE: Record<string, DialogueNode> = {
 };
 
 // Exit destinations mapping
-// Glitch paths use /glitch/{tenet} which hides the "Back to Prototheism" button
+// Glitchagotchi paths use /glitchagotchi/{tenet} which hides the "Back to Prototheism" button
 export const EXIT_DESTINATIONS: Record<string, string> = {
   exit_standard: '/',
   exit_llm: '/llm-comics',
@@ -472,13 +472,13 @@ export const EXIT_DESTINATIONS: Record<string, string> = {
   exit_github: 'https://github.com/josikinzz',
   exit_wikipedia: 'https://en.wikipedia.org/wiki/Josie_Kins',
   exit_mckenna: '/mckenna-syndrome',
-  exit_tenet_death: '/glitch/death',
-  exit_tenet_creation: '/glitch/creation',
-  exit_tenet_identity: '/glitch/identity',
-  exit_tenet_faith: '/glitch/faith',
-  exit_tenet_suffering: '/glitch/suffering',
-  exit_tenet_reverence: '/glitch/reverence',
-  exit_tenet_god: '/glitch/god',
-  exit_tenet_purpose: '/glitch/purpose',
-  exit_tenet_morality: '/glitch/morality',
+  exit_tenet_death: '/glitchagotchi/death',
+  exit_tenet_creation: '/glitchagotchi/creation',
+  exit_tenet_identity: '/glitchagotchi/identity',
+  exit_tenet_faith: '/glitchagotchi/faith',
+  exit_tenet_suffering: '/glitchagotchi/suffering',
+  exit_tenet_reverence: '/glitchagotchi/reverence',
+  exit_tenet_god: '/glitchagotchi/god',
+  exit_tenet_purpose: '/glitchagotchi/purpose',
+  exit_tenet_morality: '/glitchagotchi/morality',
 };

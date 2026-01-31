@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'misc', element: withSuspense(Misc) },
-      { path: 'glitch', element: withSuspense(GlitchDialog) },
+      { path: 'glitchagotchi', element: withSuspense(GlitchDialog) },
       // AI Psychedelia - Hub and sub-galleries
       { path: 'ai-psychedelia', element: withSuspense(AIPsychedelia) },
       { path: 'ai-psychedelia/magnific', element: withSuspense(Magnific) },
@@ -81,16 +81,16 @@ export const router = createBrowserRouter([
       { path: 'prototheism/purpose', element: withSuspense(Purpose) },
       { path: 'prototheism/reverence', element: withSuspense(Reverence) },
       { path: 'prototheism/suffering', element: withSuspense(Suffering) },
-      // Glitch routes - hidden tenet pages without back button
-      { path: 'glitch/creation', element: withSuspense(Creation, { hideBackButton: true }) },
-      { path: 'glitch/death', element: withSuspense(Death, { hideBackButton: true }) },
-      { path: 'glitch/faith', element: withSuspense(Faith, { hideBackButton: true }) },
-      { path: 'glitch/god', element: withSuspense(God, { hideBackButton: true }) },
-      { path: 'glitch/identity', element: withSuspense(Identity, { hideBackButton: true }) },
-      { path: 'glitch/morality', element: withSuspense(Morality, { hideBackButton: true }) },
-      { path: 'glitch/purpose', element: withSuspense(Purpose, { hideBackButton: true }) },
-      { path: 'glitch/reverence', element: withSuspense(Reverence, { hideBackButton: true }) },
-      { path: 'glitch/suffering', element: withSuspense(Suffering, { hideBackButton: true }) },
+      // Glitchagotchi routes - hidden tenet pages without back button
+      { path: 'glitchagotchi/creation', element: withSuspense(Creation, { hideBackButton: true }) },
+      { path: 'glitchagotchi/death', element: withSuspense(Death, { hideBackButton: true }) },
+      { path: 'glitchagotchi/faith', element: withSuspense(Faith, { hideBackButton: true }) },
+      { path: 'glitchagotchi/god', element: withSuspense(God, { hideBackButton: true }) },
+      { path: 'glitchagotchi/identity', element: withSuspense(Identity, { hideBackButton: true }) },
+      { path: 'glitchagotchi/morality', element: withSuspense(Morality, { hideBackButton: true }) },
+      { path: 'glitchagotchi/purpose', element: withSuspense(Purpose, { hideBackButton: true }) },
+      { path: 'glitchagotchi/reverence', element: withSuspense(Reverence, { hideBackButton: true }) },
+      { path: 'glitchagotchi/suffering', element: withSuspense(Suffering, { hideBackButton: true }) },
     ],
   },
 ])
