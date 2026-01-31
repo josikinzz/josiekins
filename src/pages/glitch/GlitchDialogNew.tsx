@@ -87,7 +87,7 @@ const CorruptionMeter = memo(function CorruptionMeter({ level }: { level: Corrup
   const statusSymbol = level === 'maximum' ? '⛧' : level === 'heavy' ? '◬' : level === 'light' ? '◊' : '○';
 
   return (
-    <div className="fixed top-20 left-1/2 -translate-x-1/2 md:absolute md:-top-12 md:left-1 md:translate-x-0 z-40 flex flex-col gap-1 w-64 font-mono tracking-wider select-none mix-blend-screen">
+    <div className="flex flex-col gap-1 w-64 mx-auto font-mono tracking-wider select-none mix-blend-screen">
 
       {/* Symbol Row */}
       <div className="flex justify-between items-center px-1">
@@ -250,8 +250,8 @@ export function GlitchDialog() {
   const effectiveCorruptionValue = Math.max(0, getCorruptionValue(currentNode.corruption) - careOffset);
   const effectiveCorruption: CorruptionLevel =
     effectiveCorruptionValue >= 10 ? 'maximum' :
-    effectiveCorruptionValue >= 6 ? 'heavy' :
-    effectiveCorruptionValue >= 3 ? 'light' : 'none';
+      effectiveCorruptionValue >= 6 ? 'heavy' :
+        effectiveCorruptionValue >= 3 ? 'light' : 'none';
 
   // Preload the large animated WebP before showing content
   useEffect(() => {
@@ -688,7 +688,7 @@ export function GlitchDialog() {
         backgroundImage="/images/shared/background.webp"
         backgroundOverlay
         headerOffset
-        className="h-screen flex flex-col items-center justify-start pt-60 md:justify-center md:pt-0 relative"
+        className="min-h-screen flex flex-col items-center justify-start pt-24 gap-6 relative"
       >
         {/* Corruption Meter */}
         <CorruptionMeter level={effectiveCorruption} />
@@ -809,7 +809,7 @@ export function GlitchDialog() {
               </div>
 
               {/* Interaction Area / Footer */}
-              <div className="relative mt-0.5 min-h-[32px] flex items-center justify-center">
+              <div className="relative mt-0.5 py-1 flex items-center justify-center">
 
                 {/* Response Options */}
                 {currentNode.responses.length > 0 && !isExiting && (() => {
@@ -883,7 +883,7 @@ export function GlitchDialog() {
 
         </div>
 
-              </Section>
+      </Section>
     </div>
   );
 }

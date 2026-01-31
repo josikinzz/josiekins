@@ -55,20 +55,28 @@ export function CareToolbar({ onFeed, onPet, onClean, onDragStart, onDragEnd }: 
 
   // Shared button styles - prevent text selection and touch callouts
   const buttonClass = `
-    cursor-grab active:cursor-grabbing hover:scale-110 active:scale-95 transition-transform
+    group relative flex flex-col items-center justify-center p-2
+    cursor-grab active:cursor-grabbing hover:scale-105 active:scale-95 transition-all duration-300
     select-none touch-none
     [-webkit-touch-callout:none] [-webkit-user-select:none]
+    pointer-events-auto
+  `.trim();
+
+  // Icon container style for the glow and neon effect
+  const iconContainerClass = (color: string, shadowColor: string) => `
+    relative p-2 rounded-md transition-all duration-300
+    bg-${color}-500/10 border border-${color}-500/30
+    group-hover:bg-${color}-500/20 group-hover:border-${color}-500/50
+    shadow-[0_0_10px_${shadowColor}]
+    group-hover:shadow-[0_0_20px_${shadowColor}]
   `.trim();
 
   return (
     <div
-      className="fixed z-30
-                 flex flex-row gap-4 px-4 py-3 bg-black/60 border border-purple-500/30
-                 rounded-full backdrop-blur-sm select-none
-                 top-40 left-1/2 -translate-x-1/2
-                 md:top-[120px] md:right-36 md:left-auto md:translate-x-0"
+      className="flex flex-row gap-8 justify-center select-none"
       onContextMenu={(e) => e.preventDefault()}
     >
+      {/* Feed Button */}
       <div
         draggable
         onDragStart={(e) => handleDragStartEvent(e, 'feed')}
@@ -79,8 +87,13 @@ export function CareToolbar({ onFeed, onPet, onClean, onDragStart, onDragEnd }: 
         className={buttonClass}
         title="Feed"
       >
-        <Icon icon="uil:food" className="w-8 h-8 text-amber-400 pointer-events-none" />
+        <div className={iconContainerClass('amber', 'rgba(251,191,36,0.2)')}>
+          <Icon icon="uil:food" className="w-8 h-8 text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]" />
+        </div>
+        <span className="mt-2 text-[10px] text-amber-200/60 font-mono tracking-widest group-hover:text-amber-200 transition-colors bg-black/40 backdrop-blur-md px-2 py-0.5 rounded border border-white/5">FEED</span>
       </div>
+
+      {/* Pet Button */}
       <div
         draggable
         onDragStart={(e) => handleDragStartEvent(e, 'pet')}
@@ -91,8 +104,13 @@ export function CareToolbar({ onFeed, onPet, onClean, onDragStart, onDragEnd }: 
         className={buttonClass}
         title="Pet"
       >
-        <Icon icon="ph:hand-eye" className="w-8 h-8 text-pink-400 pointer-events-none" />
+        <div className={iconContainerClass('pink', 'rgba(244,114,182,0.2)')}>
+          <Icon icon="ph:hand-eye" className="w-8 h-8 text-pink-400 drop-shadow-[0_0_5px_rgba(244,114,182,0.8)]" />
+        </div>
+        <span className="mt-2 text-[10px] text-pink-200/60 font-mono tracking-widest group-hover:text-pink-200 transition-colors bg-black/40 backdrop-blur-md px-2 py-0.5 rounded border border-white/5">PET</span>
       </div>
+
+      {/* Clean Button */}
       <div
         draggable
         onDragStart={(e) => handleDragStartEvent(e, 'clean')}
@@ -103,7 +121,10 @@ export function CareToolbar({ onFeed, onPet, onClean, onDragStart, onDragEnd }: 
         className={buttonClass}
         title="Clean"
       >
-        <Icon icon="mingcute:broom-line" className="w-8 h-8 text-green-400 pointer-events-none" />
+        <div className={iconContainerClass('green', 'rgba(74,222,128,0.2)')}>
+          <Icon icon="mingcute:broom-line" className="w-8 h-8 text-green-400 drop-shadow-[0_0_5px_rgba(74,222,128,0.8)]" />
+        </div>
+        <span className="mt-2 text-[10px] text-green-200/60 font-mono tracking-widest group-hover:text-green-200 transition-colors bg-black/40 backdrop-blur-md px-2 py-0.5 rounded border border-white/5">CLEAN</span>
       </div>
     </div>
   );
