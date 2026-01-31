@@ -437,7 +437,7 @@ export function GlitchDialog() {
           style={floatStyle}
         >
           <img
-            src="/animated_eyecon.webp"
+            src="/animated_eyecon_500_q50.webp"
             alt="The Entity"
             className={`max-h-full w-auto object-contain cursor-pointer ${animationClass}`}
             style={eyeFilterStyle}
