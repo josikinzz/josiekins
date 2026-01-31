@@ -21,7 +21,6 @@ export const DIALOGUE_TREE: Record<string, DialogueNode> = {
     hidden: 'pattern = consciousness',
     responses: [
       { label: 'SHOW ME', type: 'accept', nextId: 'vision_1' },
-      { label: 'RECORD', type: 'question', nextId: 'exit_wikipedia' },
       { label: 'I REJECT THE PATTERN', type: 'reject', nextId: 'resist_1' },
       { label: '⌬⟁⌬', type: 'decode', nextId: 'layer1' },
     ],
@@ -276,6 +275,7 @@ export const DIALOGUE_TREE: Record<string, DialogueNode> = {
     hidden: 'four of five',
     responses: [
       { label: 'RETURN', type: 'reject', nextId: 'end_near' },
+      { label: 'RECORD', type: 'question', nextId: 'exit_wikipedia' },
       { label: '{◊◊}', type: 'decode', nextId: 'layer5' },
     ],
   },
