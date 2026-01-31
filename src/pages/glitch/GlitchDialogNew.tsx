@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, useMemo, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Section } from '@/components/Section';
+import { Icon } from '@iconify/react';
 import {
   DialogueNode,
   ResponseType,
@@ -17,6 +18,16 @@ import { DIALOGUE_TREE, EXIT_DESTINATIONS } from './dialogueTree';
 import { Typewriter } from './Typewriter';
 import { useAnimalese, unlockAudio } from './useAnimalese';
 import { corruptText } from './textCorruptor';
+import { CareToolbar } from './CareToolbar';
+import { HeartBurst } from './HeartBurst';
+
+// Poop data interface for care system
+interface PoopData {
+  id: string;
+  x: number;  // % position from left
+  y: number;  // % position from top
+  rotation: number;  // -15 to 15 degrees
+}
 
 // Helper: Determine exit destination type for visual indicators
 function getExitDestinationType(nextId: string): ExitDestinationType {
@@ -48,12 +59,19 @@ const GRID_PATTERN_STYLE = {
 
 // Animation pool for random selection (equal probability)
 const ANIMATION_POOL = [
+  // Rotation-based animations
   { className: 'animate-spin-cw', duration: 800 },
   { className: 'animate-spin-ccw', duration: 600 },
   { className: 'animate-wobble', duration: 1200 },
   { className: 'animate-pulse-scale', duration: 1200 },
   { className: 'animate-chaos', duration: 500 },
   { className: 'animate-decode', duration: 1000 },
+  // Natural movement animations
+  { className: 'animate-pendulum', duration: 1800 },
+  { className: 'animate-tilt', duration: 1400 },
+  { className: 'animate-drift', duration: 2000 },
+  { className: 'animate-breathe', duration: 1600 },
+  { className: 'animate-figure8', duration: 2200 },
 ];
 
 // Corruption meter component - esoteric UI style (memoized to prevent re-renders)
@@ -174,9 +192,19 @@ function getTenetExit(dominantType: ResponseType): string {
   return mapping[dominantType];
 }
 
+// Helper: Convert corruption level to numeric value
+function getCorruptionValue(level: CorruptionLevel): number {
+  switch (level) {
+    case 'none': return 0;
+    case 'light': return 3;
+    case 'heavy': return 6;
+    case 'maximum': return 10;
+  }
+}
+
 export function GlitchDialog() {
   const navigate = useNavigate();
-  const { speakChar } = useAnimalese();
+  const { speakChar, speak } = useAnimalese();
 
   const [state, setState] = useState<GlitchState>({
     currentNode: 'init',
@@ -193,6 +221,14 @@ export function GlitchDialog() {
   const [exitCountdown, setExitCountdown] = useState<number | null>(null);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [hoverAnimationClass, setHoverAnimationClass] = useState<string>('');
+
+  // Care system state
+  const [careOffset, setCareOffset] = useState(0);  // How much corruption has been reduced by care
+  const [poops, setPoops] = useState<PoopData[]>([]);
+  const [showHearts, setShowHearts] = useState(false);
+  const [careMessage, setCareMessage] = useState<string | null>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
+
   const [isImageLoaded, setIsImageLoaded] = useState(() => {
     // Check if image is already cached on initial render
     if (typeof window !== 'undefined') {
@@ -206,8 +242,16 @@ export function GlitchDialog() {
   const exitTimersRef = useRef<NodeJS.Timeout[]>([]);
   const hasStartedExitRef = useRef(false);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const prevCorruptionRef = useRef<CorruptionLevel>('none');
 
   const currentNode: DialogueNode = DIALOGUE_TREE[state.currentNode];
+
+  // Calculate effective corruption after care actions
+  const effectiveCorruptionValue = Math.max(0, getCorruptionValue(currentNode.corruption) - careOffset);
+  const effectiveCorruption: CorruptionLevel =
+    effectiveCorruptionValue >= 10 ? 'maximum' :
+    effectiveCorruptionValue >= 6 ? 'heavy' :
+    effectiveCorruptionValue >= 3 ? 'light' : 'none';
 
   // Preload the large animated WebP before showing content
   useEffect(() => {
@@ -255,6 +299,23 @@ export function GlitchDialog() {
 
   // Handle Maximum Corruption Event (100%)
   const [isMaxCorruption, setIsMaxCorruption] = useState(false);
+
+  // Spawn poop when dialogue corruption increases
+  useEffect(() => {
+    const prevValue = getCorruptionValue(prevCorruptionRef.current);
+    const newValue = getCorruptionValue(currentNode.corruption);
+
+    if (newValue > prevValue && poops.length < 5) {
+      // Spawn a poop
+      setPoops(prev => [...prev, {
+        id: `poop-${Date.now()}`,
+        x: 20 + Math.random() * 60,  // 20% to 80% from left
+        y: 70 + Math.random() * 20,  // 70% to 90% from top
+        rotation: -15 + Math.random() * 30,
+      }]);
+    }
+    prevCorruptionRef.current = currentNode.corruption;
+  }, [currentNode.corruption, poops.length]);
 
   useEffect(() => {
     if (currentNode.corruption === 'maximum') {
@@ -460,17 +521,79 @@ export function GlitchDialog() {
     if (/[a-zA-Z]/.test(char)) {
       // Grumpy voice = lower pitch (0.5-0.7 range), with slight variation
       // Corruption level makes it even lower/creepier
-      const basePitch = currentNode.corruption === 'maximum' ? 0.4 :
-        currentNode.corruption === 'heavy' ? 0.5 :
-          currentNode.corruption === 'light' ? 0.55 : 0.6;
+      const basePitch = effectiveCorruption === 'maximum' ? 0.4 :
+        effectiveCorruption === 'heavy' ? 0.5 :
+          effectiveCorruption === 'light' ? 0.55 : 0.6;
       const variation = 0.95 + Math.random() * 0.1;
       speakChar(char, { pitch: basePitch * variation });
     }
-  }, [speakChar, currentNode.corruption]);
+  }, [speakChar, effectiveCorruption]);
 
   // Handle typing complete
   const handleTypingComplete = useCallback(() => {
     setIsTypingComplete(true);
+  }, []);
+
+  // Care system handlers
+  const handleFeed = useCallback(() => {
+    // Increase care offset to reduce effective corruption
+    setCareOffset(prev => prev + 2);
+    setCareMessage("YUMMERS! :3");
+    // Speak with happy high pitch
+    speak("YUMMERS", { pitch: 1.3, shorten: false });
+    // Trigger wobble animation
+    const anim = ANIMATION_POOL.find(a => a.className === 'animate-wobble')!;
+    setAnimationClass(anim.className);
+    setTimeout(() => setAnimationClass(''), anim.duration);
+    // Clear message after 2s
+    setTimeout(() => setCareMessage(null), 2000);
+  }, [speak]);
+
+  const handlePet = useCallback(() => {
+    // Increase care offset to reduce effective corruption
+    setCareOffset(prev => prev + 1);
+    setShowHearts(true);
+    setCareMessage("~purrrr~");
+    // Speak with content purring tone
+    speak("purrrrr", { pitch: 0.8, shorten: false });
+    // Trigger breathe animation
+    const anim = ANIMATION_POOL.find(a => a.className === 'animate-breathe')!;
+    setAnimationClass(anim.className);
+    setTimeout(() => {
+      setAnimationClass('');
+      setShowHearts(false);
+      setCareMessage(null);
+    }, anim.duration);
+  }, [speak]);
+
+  const handleClean = useCallback(() => {
+    if (poops.length > 0) {
+      setPoops(prev => prev.slice(1));  // Remove oldest poop
+      setCareMessage("*swoosh*");
+      // Speak with quick swoosh sound
+      speak("swoosh", { pitch: 1.1, shorten: false });
+      // Clear message after 1s
+      setTimeout(() => setCareMessage(null), 1000);
+    }
+  }, [poops.length, speak]);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    const action = e.dataTransfer.getData('careAction');
+
+    if (action === 'feed') handleFeed();
+    else if (action === 'pet') handlePet();
+    else if (action === 'clean') handleClean();
+  }, [handleFeed, handlePet, handleClean]);
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  }, []);
+
+  const handleDragLeave = useCallback(() => {
+    setIsDragOver(false);
   }, []);
 
   // Memoize float animation style (avoid object recreation on every render)
@@ -488,7 +611,7 @@ export function GlitchDialog() {
 
     // Color progression matching corruption meter
     let glowColor: string;
-    switch (currentNode.corruption) {
+    switch (effectiveCorruption) {
       case 'maximum':
         glowColor = `rgba(239, 68, 68, ${glowOpacity})`; // red-500
         break;
@@ -505,7 +628,7 @@ export function GlitchDialog() {
       transform: 'translateZ(0)',
       willChange: 'transform, filter'
     };
-  }, [isExiting, currentNode.corruption]);
+  }, [isExiting, effectiveCorruption]);
 
   // Combine animation classes - click animation takes priority over hover
   const activeAnimationClass = animationClass || hoverAnimationClass;
@@ -516,7 +639,7 @@ export function GlitchDialog() {
     if (type === 'decode') {
       return label;
     }
-    return corruptText(label, currentNode.corruption === 'maximum' ? 'light' : 'none');
+    return corruptText(label, effectiveCorruption === 'maximum' ? 'light' : 'none');
   };
 
   // Show loading indicator until image is ready
@@ -543,12 +666,16 @@ export function GlitchDialog() {
         className="h-screen flex flex-col items-center justify-center relative"
       >
         {/* Corruption Meter */}
-        <CorruptionMeter level={currentNode.corruption} />
+        <CorruptionMeter level={effectiveCorruption} />
 
-        {/* Large Floating Eye */}
+        {/* Large Floating Eye - Drop Target */}
         <div
-          className="relative w-full max-w-2xl mx-auto animate-float flex justify-center items-center h-[350px]"
+          className={`relative w-full max-w-2xl mx-auto animate-float flex justify-center items-center h-[350px]
+                      transition-all duration-200 ${isDragOver ? 'ring-4 ring-purple-500/50 rounded-full' : ''}`}
           style={floatStyle}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
         >
           <img
             src="/animated_eyecon_500_q50.webp"
@@ -558,6 +685,24 @@ export function GlitchDialog() {
             onMouseEnter={handleEyeEnter}
             onMouseLeave={handleEyeLeave}
           />
+
+          {/* Heart burst on pet */}
+          {showHearts && <HeartBurst />}
+
+          {/* Poops around eyecon */}
+          {poops.map(poop => (
+            <div
+              key={poop.id}
+              className="absolute text-3xl transition-all duration-300"
+              style={{
+                left: `${poop.x}%`,
+                top: `${poop.y}%`,
+                transform: `rotate(${poop.rotation}deg)`,
+              }}
+            >
+              <Icon icon="la:poop" className="text-amber-700 drop-shadow-lg" />
+            </div>
+          ))}
         </div>
 
         {/* Dialog Box */}
@@ -580,7 +725,7 @@ export function GlitchDialog() {
             />
 
             {/* Glitch Overlay (Active at high corruption) */}
-            {(currentNode.corruption === 'heavy' || currentNode.corruption === 'maximum') && (
+            {(effectiveCorruption === 'heavy' || effectiveCorruption === 'maximum') && (
               <div className="absolute inset-0 bg-purple-500/5 animate-pulse pointer-events-none" />
             )}
 
@@ -604,7 +749,7 @@ export function GlitchDialog() {
                   <Typewriter
                     text={currentNode.text}
                     speed={50}
-                    corruption={currentNode.corruption}
+                    corruption={effectiveCorruption}
                     onComplete={handleTypingComplete}
                     onCharacter={handleCharacter}
                     isAnimating={isAnimating}
@@ -619,6 +764,15 @@ export function GlitchDialog() {
                     [{currentNode.hidden}]
                   </span>
                 )}
+
+                {/* Care message overlay */}
+                {careMessage && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
+                    <span className="text-2xl text-pink-300 font-heading animate-bounce">
+                      {careMessage}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Interaction Area / Footer */}
@@ -629,7 +783,7 @@ export function GlitchDialog() {
                   // Calculate progressive intensity based on depth (0.8 to 1.2 range)
                   const depthIntensity = Math.min(1.2, 0.8 + (state.history.length * 0.05));
                   // Get corruption-based glow multiplier
-                  const glowMultiplier = CORRUPTION_GLOW_MULTIPLIERS[currentNode.corruption];
+                  const glowMultiplier = CORRUPTION_GLOW_MULTIPLIERS[effectiveCorruption];
                   // Get path branch for subtle hue shift
                   const pathBranch = getCurrentPathBranch(state.currentNode);
 
@@ -695,6 +849,9 @@ export function GlitchDialog() {
           <div className="absolute -bottom-1 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
 
         </div>
+
+        {/* Care Toolbar */}
+        <CareToolbar onClean={handleClean} />
       </Section>
     </div>
   );
