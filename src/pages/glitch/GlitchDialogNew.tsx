@@ -1,17 +1,60 @@
 import { useState, useEffect, useCallback, useRef, useMemo, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Section } from '@/components/Section';
-import { DialogueNode, ResponseType, GlitchState, CorruptionLevel, ANIMATIONS, BUTTON_STYLES } from './types';
+import {
+  DialogueNode,
+  ResponseType,
+  GlitchState,
+  CorruptionLevel,
+  BUTTON_STYLES,
+  ExitDestinationType,
+  EXIT_DESTINATION_STYLES,
+  PathBranch,
+  PATH_CONTAINER_STYLES,
+  CORRUPTION_GLOW_MULTIPLIERS
+} from './types';
 import { DIALOGUE_TREE, EXIT_DESTINATIONS } from './dialogueTree';
 import { Typewriter } from './Typewriter';
 import { useAnimalese, unlockAudio } from './useAnimalese';
 import { corruptText } from './textCorruptor';
+
+// Helper: Determine exit destination type for visual indicators
+function getExitDestinationType(nextId: string): ExitDestinationType {
+  if (!nextId.startsWith('exit_')) return 'dialogue';
+
+  const destination = EXIT_DESTINATIONS[nextId];
+  if (!destination) return 'internal';
+
+  if (destination.startsWith('http')) return 'external';
+  if (destination.endsWith('.pdf')) return 'pdf';
+  if (nextId.startsWith('exit_tenet_')) return 'tenet';
+
+  return 'internal';
+}
+
+// Helper: Determine current path branch for subtle hue shifts
+function getCurrentPathBranch(nodeId: string): PathBranch {
+  if (nodeId.startsWith('seeker') || nodeId.startsWith('layer') || nodeId.startsWith('decode') || nodeId.startsWith('identity')) return 'seeker';
+  if (nodeId.startsWith('chaos') || nodeId.startsWith('resist')) return 'chaos';
+  if (nodeId.startsWith('still') || nodeId.startsWith('accept')) return 'contemplative';
+  return 'neutral';
+}
 
 // Grid pattern style - shared constant to avoid recreation
 const GRID_PATTERN_STYLE = {
   backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)',
   backgroundSize: '4px 4px'
 };
+
+// Animation pool for random selection (equal probability)
+const ANIMATION_POOL = [
+  { className: 'animate-spin-cw', duration: 800 },
+  { className: 'animate-spin-ccw', duration: 600 },
+  { className: 'animate-wobble', duration: 1200 },
+  { className: 'animate-pulse-scale', duration: 1200 },
+  { className: 'animate-chaos', duration: 500 },
+  { className: 'animate-decode', duration: 1000 },
+];
 
 // Corruption meter component - esoteric UI style (memoized to prevent re-renders)
 const CorruptionMeter = memo(function CorruptionMeter({ level }: { level: CorruptionLevel }) {
@@ -149,7 +192,7 @@ export function GlitchDialog() {
   const [isExiting, setIsExiting] = useState(false);
   const [exitCountdown, setExitCountdown] = useState<number | null>(null);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
-  const [isEyeHovered, setIsEyeHovered] = useState(false);
+  const [hoverAnimationClass, setHoverAnimationClass] = useState<string>('');
   const [isImageLoaded, setIsImageLoaded] = useState(() => {
     // Check if image is already cached on initial render
     if (typeof window !== 'undefined') {
@@ -240,9 +283,12 @@ export function GlitchDialog() {
     // Unlock audio on iOS Safari (safe to call multiple times)
     await unlockAudio();
 
+    // Randomly select animation from pool
+    const randomAnim = ANIMATION_POOL[Math.floor(Math.random() * ANIMATION_POOL.length)];
+
     // Start animation
     setIsAnimating(true);
-    setAnimationClass(ANIMATIONS[type].className);
+    setAnimationClass(randomAnim.className);
     setShowHidden(false);
 
     // Calculate new streak
@@ -286,7 +332,7 @@ export function GlitchDialog() {
         streak: newStreak,
         totalClicks: prev.totalClicks + 1,
       }));
-    }, ANIMATIONS[type].duration);
+    }, randomAnim.duration);
   }, [isAnimating, isExiting, state.history, state.streak]);
 
   // Handle exit navigation with countdown
@@ -395,6 +441,18 @@ export function GlitchDialog() {
     }
   }, []);
 
+  // Eye hover handlers - random animation on hover
+  const handleEyeEnter = useCallback(() => {
+    if (!isAnimating) {
+      const randomAnim = ANIMATION_POOL[Math.floor(Math.random() * ANIMATION_POOL.length)];
+      setHoverAnimationClass(randomAnim.className);
+    }
+  }, [isAnimating]);
+
+  const handleEyeLeave = useCallback(() => {
+    setHoverAnimationClass('');
+  }, []);
+
   // Handle character typed - play animalese on every letter (grumpy voice)
   const handleCharacter = useCallback((char: string, _index: number) => {
     charCountRef.current++;
@@ -421,15 +479,36 @@ export function GlitchDialog() {
     '--float-duration': '8s'
   } as React.CSSProperties), []);
 
-  // Memoize drop-shadow filter style (changes based on isExiting and hover)
+  // Memoize drop-shadow filter style (changes based on isExiting and corruption level)
   // Includes GPU acceleration hints for Safari animated webp performance
-  const eyeFilterStyle = useMemo(() => ({
-    filter: `drop-shadow(0 0 ${isExiting ? '20px' : '8px'} rgba(168, 85, 247, ${isExiting ? '1' : '0.95'}))`,
-    WebkitTransform: `translateZ(0) rotate(${isEyeHovered ? '360deg' : '0deg'})`,
-    transform: `translateZ(0) rotate(${isEyeHovered ? '360deg' : '0deg'})`,
-    transition: 'transform 0.7s ease-in-out',
-    willChange: 'transform, filter'
-  }), [isExiting, isEyeHovered]);
+  // Glow color matches corruption meter: purple → pink → red
+  const eyeFilterStyle = useMemo(() => {
+    const glowSize = isExiting ? '20px' : '8px';
+    const glowOpacity = isExiting ? '1' : '0.95';
+
+    // Color progression matching corruption meter
+    let glowColor: string;
+    switch (currentNode.corruption) {
+      case 'maximum':
+        glowColor = `rgba(239, 68, 68, ${glowOpacity})`; // red-500
+        break;
+      case 'heavy':
+        glowColor = `rgba(236, 72, 153, ${glowOpacity})`; // pink-500
+        break;
+      default:
+        glowColor = `rgba(168, 85, 247, ${glowOpacity})`; // purple-500
+    }
+
+    return {
+      filter: `drop-shadow(0 0 ${glowSize} ${glowColor})`,
+      WebkitTransform: 'translateZ(0)',
+      transform: 'translateZ(0)',
+      willChange: 'transform, filter'
+    };
+  }, [isExiting, currentNode.corruption]);
+
+  // Combine animation classes - click animation takes priority over hover
+  const activeAnimationClass = animationClass || hoverAnimationClass;
 
   // Get button label with potential corruption
   const getButtonLabel = (label: string, type: ResponseType) => {
@@ -474,10 +553,10 @@ export function GlitchDialog() {
           <img
             src="/animated_eyecon_500_q50.webp"
             alt="The Entity"
-            className={`max-h-full w-auto object-contain cursor-pointer ${animationClass}`}
+            className={`max-h-full w-auto object-contain cursor-pointer ${activeAnimationClass}`}
             style={eyeFilterStyle}
-            onMouseEnter={() => setIsEyeHovered(true)}
-            onMouseLeave={() => setIsEyeHovered(false)}
+            onMouseEnter={handleEyeEnter}
+            onMouseLeave={handleEyeLeave}
           />
         </div>
 
@@ -546,28 +625,49 @@ export function GlitchDialog() {
               <div className="relative mt-0.5 min-h-[32px] flex items-center justify-center">
 
                 {/* Response Options */}
-                {currentNode.responses.length > 0 && !isExiting && (
-                  <div className={`flex flex-wrap gap-2 justify-center transition-all duration-500 ${isTypingComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-                    {currentNode.responses.map((response, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleResponse(response.type, response.nextId)}
-                        disabled={isAnimating || !isTypingComplete}
-                        className={`
-                          relative overflow-hidden px-4 py-1 border border-white/20
-                          text-[10px] md:text-xs font-bold tracking-widest uppercase text-white/90
-                          transition-all duration-300
-                          hover:bg-white/10 hover:border-white/40 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]
-                          disabled:opacity-50 disabled:cursor-not-allowed
-                          before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:-translate-x-full before:hover:animate-shimmer
-                          ${BUTTON_STYLES[response.type]}
-                        `}
-                      >
-                        {getButtonLabel(response.label, response.type)}
-                      </button>
-                    ))}
-                  </div>
-                )}
+                {currentNode.responses.length > 0 && !isExiting && (() => {
+                  // Calculate progressive intensity based on depth (0.8 to 1.2 range)
+                  const depthIntensity = Math.min(1.2, 0.8 + (state.history.length * 0.05));
+                  // Get corruption-based glow multiplier
+                  const glowMultiplier = CORRUPTION_GLOW_MULTIPLIERS[currentNode.corruption];
+                  // Get path branch for subtle hue shift
+                  const pathBranch = getCurrentPathBranch(state.currentNode);
+
+                  return (
+                    <div
+                      className={`flex flex-wrap gap-2 justify-center transition-all duration-500 ${isTypingComplete ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'} ${PATH_CONTAINER_STYLES[pathBranch]}`}
+                      style={{
+                        '--intensity': depthIntensity,
+                        '--glow-mult': glowMultiplier
+                      } as React.CSSProperties}
+                    >
+                      {currentNode.responses.map((response, index) => {
+                        const exitType = getExitDestinationType(response.nextId);
+
+                        return (
+                          <button
+                            key={index}
+                            onClick={() => handleResponse(response.type, response.nextId)}
+                            disabled={isAnimating || !isTypingComplete}
+                            className={`
+                              relative overflow-hidden px-4 py-1 border
+                              text-[10px] md:text-xs font-bold tracking-widest uppercase
+                              transition-all duration-300
+                              disabled:opacity-50 disabled:cursor-not-allowed
+                              before:absolute before:inset-0 before:bg-gradient-to-r
+                              before:from-transparent before:via-white/20 before:to-transparent
+                              before:-translate-x-full before:hover:animate-shimmer
+                              ${BUTTON_STYLES[response.type]}
+                              ${EXIT_DESTINATION_STYLES[exitType]}
+                            `}
+                          >
+                            {getButtonLabel(response.label, response.type)}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
 
                 {/* Exit Countdown */}
                 {isExiting && exitCountdown !== null && (
